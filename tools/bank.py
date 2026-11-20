@@ -300,7 +300,8 @@ EV = {
 }
 
 # Each day: 5 rounds (L, M, R, fact). Easier start, close call to finish.
-# Every event appears once across all days ("today" excepted).
+# Repeat limits (checked below): question events never repeat; left/right events
+# at most MAX_USES times, MIN_GAP_DAYS apart. "today" is exempt.
 DAYS = [
  [ # 1
   ("pyramid","cleopatra","moon","Cleopatra lived about 2,500 years after the Great Pyramid was built, but only about 2,000 years before Apollo 11. To her, the pyramids were already ancient."),
@@ -409,6 +410,9 @@ DAYS = [
  ],
 ]
 
+MAX_USES = 3        # most times any event may appear across all puzzles
+MIN_GAP_DAYS = 30   # fewest days between two appearances of the same event
+
 def yr(eid, year_now):
     y = EV[eid][2]
     return year_now if y == NOW else y
@@ -442,8 +446,21 @@ def main():
             rows.append(dict(day=d, round=r, left=EV[L][1], middle=EV[M][1], right=EV[R][1],
                              answer="Left" if gl < gr else "Right", gap_left=gl, gap_right=gr,
                              closeness=round(min(gl, gr) / max(gl, gr), 2), fact=fact))
+    # Repeat limits: a middle (question) event is never reused; an anchor (left/right)
+    # event may appear up to MAX_USES times, at least MIN_GAP_DAYS apart, never twice in a day.
+    mids = {}
+    for d, day in enumerate(DAYS, 1):
+        for r, (L, M, R, f) in enumerate(day, 1):
+            mids.setdefault(M, []).append(f"{d}.{r}")
+    for e, where in mids.items():
+        if len(where) > 1: problems.append(f"question used twice: {EV[e][1]} in rounds {', '.join(where)}")
     for e, where in seen.items():
-        if len(where) > 1: problems.append(f"repeat: {EV[e][1]} in rounds {', '.join(where)}")
+        if len(where) > MAX_USES:
+            problems.append(f"used {len(where)} times (max {MAX_USES}): {EV[e][1]} in {', '.join(where)}")
+        days = sorted(int(w.split('.')[0]) for w in where)
+        for a, b in zip(days, days[1:]):
+            if b - a < MIN_GAP_DAYS:
+                problems.append(f"repeated within {MIN_GAP_DAYS} days: {EV[e][1]} in {', '.join(where)}"); break
     if problems:
         print("PROBLEMS:\n  " + "\n  ".join(problems)); sys.exit(1)
 
