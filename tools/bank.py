@@ -307,7 +307,7 @@ DAYS = [
   ("pyramid","cleopatra","moon","Cleopatra lived about 2,500 years after the Great Pyramid was built, but only about 2,000 years before Apollo 11. To her, the pyramids were already ancient."),
   ("cook","civilwar","email","The American Civil War began in 1861, 91 years after Captain Cook reached Australia's east coast and 110 years before the first email."),
   ("stego","trex","today","About 80 million years separate Stegosaurus and T. rex. That's more time than separates T. rex from you."),
-  ("gobekli","mammoths","today","Woolly mammoths survived on Wrangel Island in the Arctic until around 2000 BC, after the Great Pyramid was built. That's closer to today than to Göbekli Tepe, one of the oldest known temples."),
+  ("gobekli","mammoths","forbidden","Woolly mammoths survived on Wrangel Island in the Arctic until around 2000 BC, after the Great Pyramid was built. That's closer to the building of China's Forbidden City than to Göbekli Tepe, one of the oldest known temples."),
   ("genghis","aztecs","joan","A close one: the Aztecs founded Tenochtitlan, on the site of today's Mexico City, in 1325, 119 years after Genghis Khan became Great Khan and 106 years before Joan of Arc was executed."),
  ],
  [ # 2
@@ -321,7 +321,7 @@ DAYS = [
   ("parthenon","machu","today","Machu Picchu looks ancient, but the Inca built it around 1450. That's much closer to today than to the building of the Parthenon in Athens."),
   ("periodic","pluto","plutodemote","Pluto was discovered in 1930, 61 years after Mendeleev drew up the periodic table, and counted as a planet for 76 years until 2006."),
   ("hubble","gta","genome","The original Grand Theft Auto was made in Dundee by DMA Design and released in 1997, seven years after Hubble launched and six years before the human genome was sequenced."),
-  ("scream","mile","today","Roger Bannister ran the first mile in under four minutes in 1954, closer in time to Munch painting The Scream than to today."),
+  ("scream","mile","facebook",'Roger Bannister ran the first mile in under four minutes in 1954, 61 years after Munch painted The Scream and 50 years before Facebook launched.'),
   ("ramesses","olympia","socrates","A close one: the first recorded Olympics, in 776 BC, are slightly closer to the death of Socrates than to the death of Ramesses II."),
  ],
  [ # 4
@@ -334,29 +334,29 @@ DAYS = [
  [ # 5
   ("hannibal","oxford","today","Teaching at Oxford began in 1096. Oxford is closer in time to you than to Hannibal crossing the Alps with his elephants."),
   ("mobydick","bulb","modelt","Edison's practical light bulb arrived in 1879, 28 years after Moby-Dick and 29 years before the Model T."),
-  ("firstdinos","asteroid","today","Dinosaurs had been around for over 160 million years when the asteroid hit, about 66 million years ago. The end of their reign is closer to us than to its beginning."),
+  ("firstdinos","asteroid","lucy",'Dinosaurs had been around for over 160 million years when the asteroid hit, about 66 million years ago. The end of their reign is closer to Lucy, our early ancestor, than to its beginning.'),
   ("copernicus","mayflower","stpete","The Mayflower landed in 1620, 77 years after Copernicus put the Sun at the centre of the universe and 83 years before St Petersburg was founded."),
   ("starry","mickey","starwars","Mickey Mouse made his debut in Steamboat Willie in 1928, 39 years after Van Gogh painted The Starry Night and 49 years before Star Wars."),
  ],
  [ # 6
-  ("iliad","pompeii","today","Pompeii was buried by Vesuvius in AD 79, roughly 800 years after Homer's Iliad is thought to have been written down."),
-  ("archimedes","vending","today","Hero of Alexandria designed a coin-operated holy water dispenser in the 1st century AD, only about 260 years after Archimedes died."),
+  ("iliad","pompeii","gama","Pompeii was buried by Vesuvius in AD 79, roughly 800 years after Homer's Iliad is thought to have been written down, and over 1,400 years before Vasco da Gama reached India."),
+  ("archimedes","vending","hastings",'Hero of Alexandria designed a coin-operated holy water dispenser in the 1st century AD, only about 260 years after Archimedes died and around a thousand years before the Battle of Hastings.'),
   ("charlemagne","magna","fire","Magna Carta was sealed in 1215, 415 years after Charlemagne was crowned emperor and 451 years before the Great Fire of London."),
-  ("oscars","beatles","today","The Beatles released their first album, Please Please Me, in 1963, only 34 years after the first Academy Awards."),
+  ("oscars","beatles","toystory",'A close one: the Beatles released their first album, Please Please Me, in 1963, 34 years after the first Academy Awards and 32 years before Toy Story.'),
   ("walkman","youtube","today","A close call: YouTube launched in 2005, 26 years after the Sony Walkman first went on sale."),
  ],
  [ # 7
   ("waterloo","match","victoria","John Walker invented the friction match in 1826, 11 years after the Battle of Waterloo and 12 years before Queen Victoria was crowned."),
   ("tincan","canopener","wright","For almost 50 years people opened tin cans with hammers and chisels. The dedicated can opener didn't appear until 1858."),
   ("alice","tv","gameboy","John Logie Baird, from Helensburgh in Scotland, gave the first public demonstration of television in 1926, 61 years after Alice in Wonderland was published."),
-  ("nobel","superbowl","today","The first Super Bowl was played in January 1967, 66 years after the first Nobel Prizes were awarded."),
+  ("nobel","superbowl","higgs",'The first Super Bowl was played in January 1967, 66 years after the first Nobel Prizes and 45 years before the Higgs boson was found.'),
   ("fosbury","dolly","today","A close call: Dolly, cloned at the Roslin Institute near Edinburgh, was born in 1996, 28 years after Dick Fosbury flopped his way to Olympic gold."),
  ],
  [ # 8
-  ("insects","flowers","today","Insects had been around for well over 200 million years before the first flowers. Flowering plants are closer in time to you than to the first insects."),
-  ("farming","gilgamesh","today","The Epic of Gilgamesh, one of the oldest known stories, was first written down around 2100 BC. That's closer to today than to the beginnings of farming."),
+  ("insects","flowers","erectus",'Insects had been around for well over 200 million years before the first flowers. Flowering plants are closer in time to Homo erectus, an early human, than to the first insects.'),
+  ("farming","gilgamesh","luther","The Epic of Gilgamesh, one of the oldest known stories, was first written down around 2100 BC. That's closer to Luther's 95 Theses than to the beginnings of farming."),
   ("sapiens","neander","today","Our species shared the planet with Neanderthals for well over 200,000 years before they disappeared, roughly 40,000 years ago."),
-  ("pangaea","apes","today","The first apes appeared around 25 million years ago, long after the supercontinent Pangaea began to break apart."),
+  ("pangaea","apes","tools",'The first apes appeared around 25 million years ago, long after the supercontinent Pangaea began to break apart. The first stone tools came about 22 million years later.'),
   ("alexander","terracotta","caesar","China's Terracotta Army was buried around 210 BC with the First Emperor, about 110 years after Alexander the Great died."),
  ],
  [ # 9
@@ -370,13 +370,13 @@ DAYS = [
   ("football","liberty","ww1","The Statue of Liberty was unveiled in New York in 1886, a gift from the people of France."),
   ("eiffel","tour","titanic","The first Tour de France was raced in 1903, 14 years after the Eiffel Tower opened and nine years before the Titanic sank."),
   ("chernobyl","bolt","today","Usain Bolt ran 100 metres in 9.58 seconds at the 2009 World Championships in Berlin, 23 years after the Chernobyl disaster."),
-  ("rumble","google","today","Google was founded in 1998, 24 years after Muhammad Ali beat George Foreman in the Rumble in the Jungle."),
+  ("rumble","google","bitcoin",'Google was founded in 1998, 24 years after Muhammad Ali beat George Foreman in the Rumble in the Jungle and 11 years before Bitcoin launched.'),
   ("ww2end","woodstock","chunnel","The closest call of the day: Woodstock came 24 years after the Second World War ended and 25 years before the Channel Tunnel opened."),
  ],
  [ # 11
   ("qin","hadrian","ming","Hadrian's Wall was begun in AD 122, about 340 years after China's First Emperor unified the country. Most of the Great Wall you can visit today came much later, under the Ming dynasty."),
   ("marathon","constant","today","The Roman Empire survived in the east until 1453, when the Ottomans took Constantinople. That's closer to today than to the Battle of Marathon."),
-  ("goldrush","ottoman","today","The Ottoman Empire, founded around 1300, lasted until 1922. Its end is closer to the California Gold Rush than to today."),
+  ("goldrush","ottoman","simpsons","A close one: the Ottoman Empire, founded around 1300, lasted until 1922. Its end is slightly closer to The Simpsons' TV debut than to the California Gold Rush."),
   ("hammurabi","tut","alphabet","Tutankhamun died around 1323 BC, closer in time to the Phoenician alphabet than to Hammurabi's code of laws."),
   ("romefall","vinland","columbus","Leif Erikson's Vikings reached North America around the year 1000, slightly closer to Columbus than to the fall of the Western Roman Empire in 476."),
  ],
@@ -389,26 +389,32 @@ DAYS = [
  ],
  [ # 13
   ("writing","stonehenge","confucius","Stonehenge's great sarsen stones went up around 2500 BC, about 700 years after writing first appeared in Mesopotamia."),
-  ("lascaux","iceage","today","The last Ice Age ended around 9700 BC, closer in time to the Lascaux cave paintings than to today."),
+  ("lascaux","iceage","stbasil","The last Ice Age ended around 9700 BC, closer in time to the Lascaux cave paintings than to the building of St Basil's Cathedral in Moscow."),
   ("spartacus","colosseum","today","The Colosseum in Rome opened in AD 80, about 150 years after Spartacus led his slave revolt."),
-  ("troy","rome","today","Rome's legendary founding in 753 BC is closer to the traditional date of the Trojan War than to today."),
-  ("wheel","coins","today","A close one: the first coins were made in Lydia, in today's Turkey, around 600 BC. That's slightly closer to today than to the invention of the wheel."),
+  ("troy","rome","hamlet","Rome's legendary founding in 753 BC is far closer to the traditional date of the Trojan War than to Shakespeare writing Hamlet."),
+  ("wheel","coins","shakes","A close one: the first coins were made in Lydia, in today's Turkey, around 600 BC. That's closer to Shakespeare's lifetime than to the invention of the wheel."),
  ],
  [ # 14
-  ("marcopolo","sistine","today","Michelangelo finished painting the Sistine Chapel ceiling in 1512, closer in time to Marco Polo's travels than to today."),
+  ("marcopolo","sistine","locomotive","Michelangelo finished painting the Sistine Chapel ceiling in 1512, closer in time to Marco Polo's travels than to the first steam locomotive."),
   ("rosetta","chocolate","dracula","Fry's of Bristol made the first moulded chocolate bar in 1847. Before that, chocolate was mostly a drink."),
   ("bicycle","tube","southpole","The world's first underground railway opened in London in 1863, with steam trains running through the tunnels."),
-  ("hagia","angkor","today","Angkor Wat, built in the 1100s, is closer in time to Constantinople's Hagia Sophia, finished in 537, than to today."),
+  ("hagia","angkor","pride","A close one: Angkor Wat, built in the 1100s, is closer in time to Constantinople's Hagia Sophia, finished in 537, than to Pride and Prejudice."),
   ("leonardo","mozart","today","Mozart was born in 1756, slightly closer to today than to the birth of Leonardo da Vinci."),
  ],
  [ # 15
   ("balloon","samurai","heart","Samurai were still fighting in 1877, slightly closer in time to the first heart transplant than to the first people flying in a hot-air balloon."),
-  ("frenchrev","nzvote","today","New Zealand became the first country to give women the vote in national elections, in 1893."),
+  ("frenchrev","nzvote","mtv",'New Zealand became the first country to give women the vote in national elections, in 1893, 104 years after the French Revolution and 88 years before MTV went on air.'),
   ("guernica","bubble","concorde","Bubble wrap was invented in 1957 by Alfred Fielding and Marc Chavannes, who were trying to make textured wallpaper. It didn't catch on as wallpaper."),
-  ("paralympics","sms","today","The first text message, 'Merry Christmas', was sent in December 1992, 32 years after the first Paralympic Games in Rome."),
+  ("paralympics","sms","phelps","The first text message, 'Merry Christmas', was sent in December 1992, 32 years after the first Paralympic Games and 16 years before Michael Phelps won eight golds."),
   ("thriller","wikipedia","today","Wikipedia launched in January 2001, 19 years after Michael Jackson's Thriller came out."),
  ],
 ]
+
+# Final "Pin it" round: one event per day, guessed to the year on a 1700-now slider.
+# Must be an exact (not approx) date between PIN_MIN and 2020, and never used in any round.
+PIN_MIN = 1700
+PINS = ["sputnik","krakatoa","everest","penicillin","xrays","pacman","suez","hobbit",
+        "gagarin","frankenstein","lego","crash","ussr","swanlake","rubik"]
 
 MAX_USES = 3        # most times any event may appear across all puzzles
 MIN_GAP_DAYS = 30   # fewest days between two appearances of the same event
@@ -461,6 +467,14 @@ def main():
         for a, b in zip(days, days[1:]):
             if b - a < MIN_GAP_DAYS:
                 problems.append(f"repeated within {MIN_GAP_DAYS} days: {EV[e][1]} in {', '.join(where)}"); break
+    if len(PINS) != len(DAYS): problems.append(f"{len(PINS)} pins for {len(DAYS)} days")
+    for d, p in enumerate(PINS, 1):
+        if p not in EV: problems.append(f"pin {d}: unknown event {p}"); continue
+        t, n, y, a = EV[p][:4]
+        if a or y == NOW or not (PIN_MIN <= y <= 2020): problems.append(f"pin {d}: {n} must be an exact year {PIN_MIN}-2020")
+        if p in used: problems.append(f"pin {d}: {n} is also used in a round")
+        if PINS.count(p) > 1: problems.append(f"pin {d}: {n} used twice")
+        if EV[p][4] == "regional": problems.append(f"pin {d}: regional event {n}")
     if problems:
         print("PROBLEMS:\n  " + "\n  ".join(problems)); sys.exit(1)
 
@@ -475,6 +489,9 @@ def main():
         fh.write("// Generated by tools/bank.py — edit the bank there, not here.\n")
         fh.write("// year \"now\" means the player's current year.\n")
         fh.write("window.CLOSER_DAYS = " + json.dumps(days, ensure_ascii=False, indent=1) + ";\n")
+        pins = [{"tag": EV[p][0], "name": EV[p][1], "year": EV[p][2], "min": PIN_MIN} for p in PINS]
+        fh.write("// Final round of each day: guess the year.\n")
+        fh.write("window.CLOSER_PINS = " + json.dumps(pins, ensure_ascii=False, indent=1) + ";\n")
 
     os.makedirs(os.path.join(root, "data"), exist_ok=True)
     with open(os.path.join(root, "data", "events.csv"), "w", newline="") as fh:
@@ -482,7 +499,7 @@ def main():
         w.writerow(["id", "event", "year", "approx", "category", "reach", "check", "used_in_puzzles", "source"])
         for k, (t, n, y, a, reach, src, chk) in EV.items():
             if k == "today": continue
-            w.writerow([k, n, y, "yes" if a else "", t, reach, chk, "yes" if k in used else "", src])
+            w.writerow([k, n, y, "yes" if a else "", t, reach, chk, "yes" if k in used or k in PINS else "", src])
     with open(os.path.join(root, "data", "rounds.csv"), "w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(rows[0].keys())); w.writeheader(); w.writerows(rows)
 

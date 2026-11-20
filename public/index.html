@@ -6,6 +6,9 @@
 <title>EraDuel — the daily history game</title>
 <meta name="description" content="Five moments in history. Ten seconds each. Is this moment closer to the one on the left, or the right?">
 <meta name="theme-color" content="#0c0b09">
+<meta property="og:title" content="EraDuel — the daily history game">
+<meta property="og:description" content="Five moments in history, ten seconds each, then pin one to the year. Can you beat my score?">
+<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -163,6 +166,35 @@
 
   .how{margin-top:34px;padding-top:20px;border-top:1px solid var(--hair2);color:var(--muted);font-size:13px;line-height:1.65;text-align:center}
   .how .caps{color:var(--gold);display:block;margin-bottom:8px}
+
+  /* final round: pin it */
+  #pin{display:none}
+  .pinhead{text-align:center;color:var(--gold);margin-bottom:14px}
+  .pinyear{font-family:var(--serif);font-size:72px;line-height:1;text-align:center;color:var(--gold2);
+       font-variant-numeric:tabular-nums;margin:22px 0 6px;letter-spacing:-1px}
+  .pinyear.locked{color:var(--ink)}
+  .pinrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+  .pinrow button{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--hair);background:transparent;
+       color:var(--gold2);font:400 24px/1 var(--serif);cursor:pointer}
+  .pinrow button:disabled{opacity:.35;cursor:default}
+  .pinrange{flex:1;-webkit-appearance:none;appearance:none;height:2px;background:var(--hair);outline:none;margin:0}
+  .pinrange::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:var(--gold);
+       border:2px solid var(--gold2);box-shadow:0 0 14px rgba(201,168,106,.6);cursor:pointer}
+  .pinrange::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:var(--gold);border:2px solid var(--gold2);cursor:pointer}
+  .pinends{display:flex;justify-content:space-between;color:var(--muted);margin-top:8px;padding:0 56px}
+  .pinresult{display:none;text-align:center;margin-top:18px}
+  .pinresult.show{display:block;animation:rise .5s cubic-bezier(.2,.8,.2,1)}
+  .pinresult .ans{color:var(--soft);font-size:15px;margin-top:8px}
+  .pinresult .ans b{font-family:var(--serif);font-weight:400;font-size:24px;color:var(--gold2)}
+  .pinline{position:relative;height:44px;margin:18px 10px 0}
+  .pinline .line{position:absolute;left:0;right:0;top:12px;height:1px;background:var(--hair)}
+  .pinline .seg{position:absolute;top:11.5px;height:2px;background:var(--bad);opacity:.8}
+  .pinline .seg.near{background:var(--good)}
+  .pinline .dot{position:absolute;top:6px;width:13px;height:13px;margin-left:-6.5px;border-radius:50%}
+  .pinline .dot.you{border:1px solid var(--soft);background:var(--bg)}
+  .pinline .dot.real{background:var(--gold);box-shadow:0 0 12px rgba(201,168,106,.6)}
+  .pinline .lab{position:absolute;top:24px;transform:translateX(-50%);color:var(--muted);font-size:9px;white-space:nowrap}
+  .pinbadge{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--gold2);margin-top:6px}
 </style>
 </head>
 <body>
@@ -184,6 +216,7 @@
   <section class="ready" id="ready">
     <div class="caps" style="color:var(--gold)" id="readyNo"></div>
     <div class="big">Five moments.<br><em>Ten seconds</em> each.</div>
+    <div class="caps" style="color:var(--muted);margin-top:14px">Then pin one to the year</div>
     <div class="rules">
       <div class="caps"><b>5</b>Rounds</div>
       <div class="caps"><b class="red">10s</b>Per round</div>
@@ -215,11 +248,38 @@
     </section>
   </main>
 
+  <section id="pin">
+    <div class="progress" id="pinProgress"></div>
+    <div class="timer" aria-live="off"><div class="track"><div class="tbar" id="pinTbar"></div></div><div class="tnum" id="pinTnum">20</div></div>
+    <div class="pinhead caps">Final round · Pin the year</div>
+    <section class="placard">
+      <div id="pIcon"></div>
+      <div class="tag caps" id="pTag"></div>
+      <div class="name" id="pName"></div>
+      <div class="orn">◆ ◆ ◆</div>
+    </section>
+    <div class="pinyear" id="pinYear">1863</div>
+    <div class="pinrow">
+      <button id="pinMinus" aria-label="One year earlier">−</button>
+      <input type="range" class="pinrange" id="pinRange" step="1" aria-label="Year">
+      <button id="pinPlus" aria-label="One year later">+</button>
+    </div>
+    <div class="pinends caps"><span id="pinMin"></span><span id="pinMax"></span></div>
+    <button class="btn" id="pinLock">Lock it in</button>
+    <section class="pinresult" id="pinResult">
+      <div class="verdict" id="pinVerdict"></div>
+      <div class="pinline" id="pinLine"></div>
+      <div class="ans" id="pinAns"></div>
+      <button class="btn" id="pinDone">See your score</button>
+    </section>
+  </section>
+
   <section class="end" id="end">
     <div class="label caps" id="endTitle"></div>
     <div class="score" id="score"></div>
     <div class="squares" id="squares"></div>
     <div class="endmsg" id="endMsg"></div>
+    <div class="pinbadge" id="pinBadge"></div>
     <div class="stats">
       <div class="caps"><b id="sPlayed">0</b>Played</div>
       <div class="caps"><b id="sStreak">0</b>Streak</div>
@@ -233,7 +293,7 @@
 
   <footer class="how">
     <span class="caps">How to play</span>
-    Each round shows one moment in history. Decide whether it sits closer in time to the moment on the left or the one on the right. Five rounds a day, the same for everyone.<br><br>
+    Each round shows one moment in history. Decide whether it sits closer in time to the moment on the left or the one on the right. Then pin one final moment to the exact year. Five rounds and a final pin each day, the same for everyone.<br><br>
     <em>A new puzzle every day at midnight.</em>
   </footer>
 </div>
@@ -247,6 +307,9 @@ const DAYS = (window.CLOSER_DAYS || []).map(day => day.map(r => {
   const fix = e => ({...e, approx: !!e.approx, year: e.year === "now" ? THIS_YEAR : e.year});
   return {L: fix(r.L), M: fix(r.M), R: fix(r.R), fact: r.fact};
 }));
+
+const PINS = window.CLOSER_PINS || [];
+const pinFor = d => PINS.length ? PINS[d % PINS.length] : null;
 
 const ICONS = {"pyramid": "<path d=\"M2 42h44\"/><path d=\"M4 40L24 8l20 32z\"/><path d=\"M24 8l20 32H30z\" fill=\"url(#hatch)\"/><path d=\"M24 8l6 32\"/><path d=\"M11 29h15M15 22h10M19 15.5h5\" opacity=\".5\"/>", "ammonite": "<circle cx=\"24\" cy=\"24\" r=\"18\"/><path d=\"M24 6a18 18 0 0 1 0 36a13 13 0 0 1 0-26a9 9 0 0 1 0 18a5 5 0 0 1 0-10a2.5 2.5 0 0 1 0 5\"/><path d=\"M24 6v5M37 11l-3 4M42 24h-5M37 37l-3-3M24 42v-5M11 37l3-3M6 24h5M11 11l4 3M30 17l-2 2M33 26h-3M29 31l-2-2M19 29l2-2\" opacity=\".55\"/>", "feather": "<path d=\"M39 5C23 8 12 20 9 43\"/><path d=\"M39 5c-1 15-12 28-29 37\"/><path d=\"M14 33l9-2M18 26l10-2M23 19l10-2M29 12l8-2\" opacity=\".6\"/><path d=\"M14 33l8-2-12 10z\" fill=\"url(#hatch)\"/>", "planet": "<circle cx=\"24\" cy=\"24\" r=\"11\"/><path d=\"M24 13a11 11 0 0 1 0 22z\" fill=\"url(#hatch)\"/><ellipse cx=\"24\" cy=\"24\" rx=\"21\" ry=\"6.5\" transform=\"rotate(-18 24 24)\"/><path d=\"M7 7v4M5 9h4M41 37v4M39 39h4M40 8v2M39 9h2\" opacity=\".7\"/>", "book": "<path d=\"M24 14C18 10 10 10 5 12v26c5-2 13-2 19 2 6-4 14-4 19-2V12c-5-2-13-2-19 2z\"/><path d=\"M24 14v26\"/><path d=\"M9 18c4-1 8-1 11 1M9 23c4-1 8-1 11 1M9 28c4-1 8-1 11 1M28 19c3-2 7-2 11-1M28 24c3-2 7-2 11-1M28 29c3-2 7-2 11-1\" opacity=\".55\"/><path d=\"M24 40c6-4 14-4 19-2v3c-5-2-13-2-19 2z\" fill=\"url(#hatch)\"/>", "scroll": "<path d=\"M14 7h22a4 4 0 0 1 4 4v25\"/><path d=\"M14 7a4 4 0 0 0-4 4v3h8v-3a4 4 0 0 0-4-4z\" fill=\"url(#hatch)\"/><path d=\"M18 11v26a4 4 0 0 0 4 4h18a4 4 0 0 0 0-8H22a4 4 0 0 1 0 8\"/><path d=\"M22 15h13M22 20h13M22 25h9\" opacity=\".55\"/>", "temple": "<path d=\"M5 16L24 6l19 10z\" fill=\"url(#hatch)\"/><path d=\"M5 16h38M7 19.5h34M7 38h34M4 42h40\"/><path d=\"M11 19.5V38M15 19.5V38M21 19.5V38M27 19.5V38M33 19.5V38M37 19.5V38\"/><path d=\"M13 21v15M24 21v15M35 21v15\" opacity=\".35\"/>", "swords": "<path d=\"M9 39L33 9l5-2-2 5L12 42z\"/><path d=\"M39 39L15 9l-5-2 2 5 24 30z\"/><path d=\"M12 31l6 6M36 31l-6 6\"/><circle cx=\"8.5\" cy=\"42.5\" r=\"2\"/><circle cx=\"39.5\" cy=\"42.5\" r=\"2\"/>", "ship": "<path d=\"M5 32h38l-6 8H11z\" fill=\"url(#hatch)\"/><path d=\"M24 5v27\"/><path d=\"M24 6l6 2.5-6 2.5\"/><path d=\"M24 12c8 3 11 9 11 18H24\"/><path d=\"M24 13c-6 3-9 8-9 17h9\"/><path d=\"M3 45c3-2 5-2 8 0s5 2 8 0 5-2 8 0 5 2 8 0 5-2 8 0\" opacity=\".6\"/>", "bulb": "<path d=\"M17 27a10 10 0 1 1 14 0c-2 2-3 4-3 7h-8c0-3-1-5-3-7z\"/><path d=\"M20 37h8M20.5 40h7M22 43h4\"/><path d=\"M21 31l1.5-7 1.5 4 1.5-4 1.5 7\" opacity=\".75\"/><path d=\"M24 3v3M10 9l2.5 2.5M38 9l-2.5 2.5M5 21h3.5M39.5 21H43\" opacity=\".6\"/>", "flask": "<path d=\"M19 4h10M20 4v12L8 38a4 4 0 0 0 4 6h24a4 4 0 0 0 4-6L28 16V4\"/><path d=\"M12.5 31h23l4 7a3 3 0 0 1-3 4h-25a3 3 0 0 1-3-4z\" fill=\"url(#hatch)\"/><circle cx=\"22\" cy=\"25\" r=\"1.4\"/><circle cx=\"27\" cy=\"21\" r=\"1\"/>", "crown": "<path d=\"M8 34L6 14l10 10 8-14 8 14 10-10-2 20z\"/><path d=\"M8 34h32v5H8z\" fill=\"url(#hatch)\"/><circle cx=\"6\" cy=\"12.5\" r=\"1.6\"/><circle cx=\"24\" cy=\"8.5\" r=\"1.6\"/><circle cx=\"42\" cy=\"12.5\" r=\"1.6\"/><path d=\"M16 29h16\" opacity=\".5\"/>", "thistle": "<path d=\"M17 23c0-5 3-8 7-8s7 3 7 8c0 4-3 7-7 7s-7-3-7-7z\" fill=\"url(#hatch)\"/><path d=\"M18 16l-3-9M21 15l-1-10M24 15V4M27 15l1-10M30 16l3-9\"/><path d=\"M24 30v15\"/><path d=\"M24 39c-4-6-10-7-15-5 4 1 7 3 9 6M24 36c4-6 10-7 15-5-4 1-7 3-9 6\"/><path d=\"M17 25l3.5-2 3.5 2 3.5-2 3.5 2\" opacity=\".7\"/>", "castle": "<path d=\"M8 43V16h5v4h4v-4h5v4h4v-4h5v4h4v-4h5v27z\"/><path d=\"M19 43v-8a5 5 0 0 1 10 0v8z\" fill=\"url(#hatch)\"/><path d=\"M13 26v5M35 26v5M4 43h40\"/>", "wall": "<path d=\"M4 15h40v26H4z\"/><path d=\"M4 21.5h40M4 28h40M4 34.5h40M13 15v6.5M25 15v6.5M37 15v6.5M8 21.5V28M19 21.5V28M31 21.5V28M42 21.5V28M13 28v6.5M25 28v6.5M37 28v6.5M8 34.5V41M19 34.5V41M31 34.5V41\" opacity=\".6\"/><path d=\"M4 41h40v3H4z\" fill=\"url(#hatch)\"/>", "tower": "<path d=\"M24 3v4M21 7h6l2 12h-10zM19 19h10l5 13H14zM14 32h20l5 12H9z\"/><path d=\"M19 44c1-5 9-5 10 0\" fill=\"url(#hatch)\"/><path d=\"M22 11l4 6M26 11l-4 6M20 22l8 8M28 22l-8 8\" opacity=\".5\"/>", "gamepad": "<path d=\"M14 17h20a8 8 0 0 1 8 8l1.5 7a5 5 0 0 1-9 3.5l-3.5-4.5H17l-3.5 4.5a5 5 0 0 1-9-3.5L6 25a8 8 0 0 1 8-8z\"/><path d=\"M14 22v8M10 26h8\"/><circle cx=\"32\" cy=\"24\" r=\"1.7\"/><circle cx=\"36\" cy=\"28\" r=\"1.7\"/><path d=\"M22 24h4\" opacity=\".6\"/>", "medal": "<path d=\"M18 22L13 5h7l4 10M30 22l5-17h-7l-4 10\"/><circle cx=\"24\" cy=\"31\" r=\"11\"/><circle cx=\"24\" cy=\"31\" r=\"7\" fill=\"url(#hatch)\"/>", "cup": "<path d=\"M10 20h24v10a10 10 0 0 1-10 10h-4a10 10 0 0 1-10-10z\" fill=\"url(#hatch)\"/><path d=\"M34 23h3a4 4 0 0 1 0 8h-3\"/><path d=\"M5 44h34\"/><path d=\"M17 15c-2-3 2-4 0-7M23 15c-2-3 2-4 0-7M29 15c-2-3 2-4 0-7\" opacity=\".6\"/>", "balloon": "<path d=\"M24 4C15 4 9 11 9 19c0 7 7 12 11 17h8c4-5 11-10 11-17 0-8-6-15-15-15z\"/><path d=\"M24 4c-4 0-6 7-6 15 0 7 2 12 2 17M24 4c4 0 6 7 6 15 0 7-2 12-2 17M9.5 17h29\" opacity=\".55\"/><path d=\"M20 36l1 4M28 36l-1 4\"/><path d=\"M21 40h6v5h-6z\" fill=\"url(#hatch)\"/>", "wheel": "<circle cx=\"24\" cy=\"24\" r=\"19\"/><circle cx=\"24\" cy=\"24\" r=\"15.5\" opacity=\".45\"/><circle cx=\"24\" cy=\"24\" r=\"3.5\" fill=\"url(#hatch)\"/><path d=\"M24 5v15.5M24 27.5V43M5 24h15.5M27.5 24H43M10.6 10.6l10.9 10.9M26.5 26.5l10.9 10.9M37.4 10.6L26.5 21.5M21.5 26.5L10.6 37.4\" opacity=\".75\"/>", "torii": "<path d=\"M4 10c7 3 33 3 40 0l-2 5c-6 2-30 2-36 0z\" fill=\"url(#hatch)\"/><path d=\"M9 21h30M14 14v30M34 14v30M24 15v6\"/><path d=\"M11 44h6M31 44h6\"/>", "stepped": "<path d=\"M3 43h42M7 43v-7h34v7M11 36v-7h26v7M15 29v-7h18v7M19 22v-7h10v7\"/><path d=\"M20 15V9h8v6z\" fill=\"url(#hatch)\"/><path d=\"M22 43V29h4v14\" opacity=\".55\"/>", "hourglass": "<path d=\"M12 4h24M12 44h24M14 4c0 10 20 10 20 20S14 34 14 44M34 4c0 10-20 10-20 20s20 10 20 20\"/><path d=\"M17.5 41L24 34l6.5 7z\" fill=\"url(#hatch)\"/><path d=\"M20 11h8\" opacity=\".5\"/><path d=\"M24 25v8\" stroke-dasharray=\"1 2\"/>", "lyre": "<path d=\"M15 9c-5 7-5 17 1 23h16c6-6 6-16 1-23\"/><path d=\"M12 13c2-2 4-2 5 0M36 13c-2-2-4-2-5 0M14 13h20\"/><path d=\"M20 13v19M24 13v19M28 13v19\" opacity=\".6\"/><path d=\"M16 32h16v5H16z\" fill=\"url(#hatch)\"/><path d=\"M18 37l-2 6h16l-2-6\"/>", "reel": "<circle cx=\"21\" cy=\"21\" r=\"16\"/><circle cx=\"21\" cy=\"21\" r=\"3\" fill=\"url(#hatch)\"/><circle cx=\"21\" cy=\"12\" r=\"3.4\"/><circle cx=\"30\" cy=\"21\" r=\"3.4\"/><circle cx=\"21\" cy=\"30\" r=\"3.4\"/><circle cx=\"12\" cy=\"21\" r=\"3.4\"/><path d=\"M21 37h23v7H21\" fill=\"url(#hatch)\"/><path d=\"M25 37v7M30 37v7M35 37v7M40 37v7\" opacity=\".6\"/>", "palette": "<path d=\"M24 5C13 5 5 13 5 23s8 19 18 19c4 0 5-3 3-6s0-6 4-6h6c6 0 9-4 9-9C45 12 36 5 24 5z\"/><circle cx=\"14\" cy=\"21\" r=\"2.6\" fill=\"url(#hatch)\"/><circle cx=\"21\" cy=\"12.5\" r=\"2.6\" fill=\"url(#hatch)\"/><circle cx=\"31\" cy=\"12.5\" r=\"2.6\" fill=\"url(#hatch)\"/><circle cx=\"14\" cy=\"31\" r=\"3.2\"/><path d=\"M30 44l11-15\" opacity=\".7\"/><path d=\"M39 27l4-5 2.5 2-4.5 4.5z\" fill=\"url(#hatch)\"/>"};
 const TAG_ICON = {"Ancient Egypt": "pyramid", "Prehistory": "ammonite", "Nature": "feather", "Space": "planet", "Education": "book", "Literature": "book", "Law": "scroll", "America": "scroll", "Ancient Greece": "temple", "Rome": "temple", "Empires": "temple", "Architecture": "temple", "Democracy": "temple", "War": "swords", "England": "swords", "Vikings": "ship", "Exploration": "ship", "Disaster": "ship", "Invention": "bulb", "Technology": "bulb", "Engineering": "bulb", "Science": "flask", "Monarchy": "crown", "Britain": "crown", "Scotland": "thistle", "Dundee": "thistle", "London": "castle", "Cold War": "wall", "China": "wall", "Paris": "tower", "Games": "gamepad", "Sport": "medal", "Food & drink": "cup", "Flight": "balloon", "Motoring": "wheel", "Japan": "torii", "The Americas": "stepped", "The present": "hourglass", "Europe": "hourglass", "Music": "lyre", "Film": "reel", "Art": "palette"};
@@ -310,13 +373,14 @@ const dateFor = i => { const d = new Date(START); d.setDate(d.getDate()+i); retu
 
 
 // ---------- timer ----------
-const LIMIT = 10;
+const LIMIT = 10, PIN_LIMIT = 20;
 let tStart = 0, tRaf = 0;
 function stopTimer(){ cancelAnimationFrame(tRaf); tRaf = 0; }
-function startTimer(){
+function startTimer(limit=LIMIT, barId="tbar", numId="tnum", onEnd=()=>answer(null)){
   stopTimer();
+  const LIMIT = limit;
   tStart = performance.now();
-  const bar = $("tbar"), num = $("tnum"), box = bar.closest(".timer");
+  const bar = $(barId), num = $(numId), box = bar.closest(".timer");
   box.classList.remove("low");
   const tick = now => {
     const left = Math.max(0, LIMIT - (now - tStart)/1000);
@@ -325,7 +389,7 @@ function startTimer(){
     if (sec !== num.textContent*1 && sec <= 3 && sec > 0) SFX.tick(sec===1);
     num.textContent = sec;
     box.classList.toggle("low", left <= 3 && left > 0);
-    if (left <= 0){ tRaf = 0; answer(null); return; }
+    if (left <= 0){ tRaf = 0; onEnd(); return; }
     tRaf = requestAnimationFrame(tick);
   };
   tRaf = requestAnimationFrame(tick);
@@ -335,12 +399,13 @@ const correctCount = () => results.filter(x=>x===true).length;
 
 function startDay(fresh=false){
   stopTimer();
-  round = 0; results = [];
+  round = 0; results = []; pinGuess = null;
   $("meta").textContent = `No. ${day+1} · ${dateFor(day)}`;
   const saved = fresh ? null : store.get("closer-day-"+day, null);
-  if (saved){ results = saved; $("ready").style.display = "none"; showEnd(); return; }
+  if (saved){ results = saved; pinGuess = store.get("closer-pin-"+day, null); $("ready").style.display = "none"; showEnd(); return; }
   $("end").classList.remove("show");
   $("game").style.display = "none";
+  $("pin").style.display = "none";
   $("readyNo").textContent = `No. ${day+1}`;
   $("ready").style.display = "block";
 }
@@ -351,13 +416,19 @@ $("startBtn").onclick = ()=>{
   renderRound();
 };
 
-function renderProgress(){
-  $("progress").innerHTML = "";
+function renderProgress(el="progress", pinCurrent=false){
+  $(el).innerHTML = "";
   for (let i=0;i<5;i++){
     const s = document.createElement("i");
     if (i<results.length) s.className = cls(results[i]);
     else if (i===round) s.className = "c";
-    $("progress").appendChild(s);
+    $(el).appendChild(s);
+  }
+  if (pinFor(day)){
+    const s = document.createElement("i");
+    s.style.borderRadius = "50%"; s.style.transform = "none";
+    if (pinCurrent) s.className = "c";
+    $(el).appendChild(s);
   }
 }
 
@@ -401,7 +472,7 @@ function answer(side){
   $("verdict").className = "verdict " + (timedOut ? "t" : ok ? "g" : "b");
   $("fact").textContent = r.fact;
   drawTimeline(gL, gR, correct);
-  $("next").textContent = round < 4 ? "Next moment" : "See your score";
+  $("next").textContent = round < 4 ? "Next moment" : pinFor(day) ? "Final round" : "See your score";
   $("reveal").classList.add("show");
   renderProgress();
   setTimeout(()=>$("reveal").scrollIntoView({behavior:"smooth",block:"nearest"}), 80);
@@ -423,8 +494,13 @@ function drawTimeline(gL, gR, correct){
 
 $("next").onclick = ()=>{
   if (round < 4){ round++; renderRound(); window.scrollTo({top:0,behavior:"smooth"}); return; }
+  if (pinFor(day) && !pinGuess){ startPin(); return; }
+  finishDay();
+};
+function finishDay(){
   const first = !store.get("closer-day-"+day, null);
   store.set("closer-day-"+day, results);
+  if (pinGuess) store.set("closer-pin-"+day, pinGuess);
   if (first){
     const st = store.get("closer-stats", {played:0, streak:0, perfect:0});
     const sc = correctCount();
@@ -432,7 +508,60 @@ $("next").onclick = ()=>{
     store.set("closer-stats", st);
   }
   showEnd(); SFX.end(correctCount()); window.scrollTo({top:0,behavior:"smooth"});
-};
+}
+
+// ---------- final round: pin it ----------
+let pinGuess = null;
+const pinWord = off => off===0 ? "Bullseye." : off<=2 ? "Spot on." : off<=5 ? "Very close." : off<=15 ? "Close." : off<=40 ? "Right era." : "Way off.";
+const pinOut = off => off===0 ? "Bullseye" : `${off} year${off===1?"":"s"} out`;
+function setPinYear(y){
+  const r = $("pinRange"); y = Math.min(+r.max, Math.max(+r.min, Math.round(y)));
+  r.value = y; $("pinYear").textContent = y;
+  $("pinMinus").disabled = y <= +r.min; $("pinPlus").disabled = y >= +r.max;
+}
+function startPin(){
+  const p = pinFor(day);
+  $("game").style.display = "none";
+  $("pin").style.display = "block";
+  renderProgress("pinProgress", true);
+  $("pIcon").innerHTML = icon(p.tag, "pop"); $("pTag").textContent = p.tag; $("pName").textContent = p.name;
+  const r = $("pinRange"); r.min = p.min; r.max = THIS_YEAR; r.disabled = false;
+  $("pinMin").textContent = p.min; $("pinMax").textContent = THIS_YEAR;
+  setPinYear((p.min + THIS_YEAR) / 2);
+  $("pinYear").classList.remove("locked");
+  $("pinTbar").closest(".timer").style.visibility = "";
+  [$("pinMinus"), $("pinPlus"), $("pinLock")].forEach(b=>{ b.disabled = false; b.style.display = ""; });
+  $("pinResult").classList.remove("show");
+  window.scrollTo({top:0,behavior:"smooth"});
+  startTimer(PIN_LIMIT, "pinTbar", "pinTnum", lockPin);
+}
+$("pinRange").oninput = e => setPinYear(+e.target.value);
+$("pinMinus").onclick = ()=> setPinYear(+$("pinRange").value - 1);
+$("pinPlus").onclick = ()=> setPinYear(+$("pinRange").value + 1);
+$("pinLock").onclick = ()=> lockPin();
+function lockPin(){
+  if (pinGuess) return;
+  stopTimer();
+  const p = pinFor(day), guess = +$("pinRange").value, off = Math.abs(guess - p.year);
+  pinGuess = {guess, year: p.year};
+  $("pinRange").disabled = true; $("pinMinus").disabled = true; $("pinPlus").disabled = true;
+  $("pinLock").style.display = "none";
+  $("pinYear").classList.add("locked");
+  $("pinTbar").closest(".timer").style.visibility = "hidden";
+  const mk = $("pinProgress").lastElementChild; if (mk){ mk.className = ""; mk.style.background = "var(--gold)"; mk.style.borderColor = "var(--gold)"; }
+  off <= 5 ? SFX.right() : off <= 40 ? SFX.timeout() : SFX.wrong();
+  $("pinVerdict").textContent = pinWord(off);
+  $("pinVerdict").className = "verdict " + (off<=5 ? "g" : off<=40 ? "t" : "b");
+  const lo = p.min, span = THIS_YEAR - lo, at = y => (y - lo) / span * 100;
+  const a = Math.min(at(guess), at(p.year)), b = Math.max(at(guess), at(p.year));
+  $("pinLine").innerHTML = `<div class="line"></div><div class="seg ${off<=5?"near":""}" style="left:${a}%;width:${b-a}%"></div>
+    <div class="dot you" style="left:${at(guess)}%"></div><div class="dot real" style="left:${at(p.year)}%"></div>
+    <div class="lab caps" style="left:${Math.min(Math.max(at(p.year),8),92)}%">${p.year}</div>`;
+  $("pinAns").innerHTML = off===0 ? `Exactly <b>${p.year}</b>.` : `It was <b>${p.year}</b>. You said ${guess}, ${pinOut(off)}.`;
+  $("pinResult").classList.add("show");
+  setTimeout(()=>$("pinResult").scrollIntoView({behavior:"smooth",block:"nearest"}), 80);
+}
+$("pinDone").onclick = ()=>{ $("pin").style.display = "none"; finishDay(); };
 
 function showEnd(){
   $("game").style.display = "none";
@@ -445,17 +574,21 @@ function showEnd(){
   const st = store.get("closer-stats", {played:0, streak:0, perfect:0});
   $("sPlayed").textContent = st.played; $("sStreak").textContent = st.streak; $("sPerfect").textContent = st.perfect;
   $("sharebox").style.display = "none";
-  $("reviewList").innerHTML = DAYS[day].map((r,i)=>`<li><i class="${cls(results[i])}"></i><div><b>${r.M.name}</b><br>${r.fact}</div></li>`).join("");
+  const pinOff = pinGuess ? Math.abs(pinGuess.guess - pinGuess.year) : null;
+  $("pinBadge").textContent = pinGuess ? `Final pin: ${pinOut(pinOff)}${pinOff===0?"!":""}` : "";
+  $("reviewList").innerHTML = DAYS[day].map((r,i)=>`<li><i class="${cls(results[i])}"></i><div><b>${r.M.name}</b><br>${r.fact}</div></li>`).join("")
+    + (pinGuess ? `<li><i style="border-radius:50%;transform:none;background:var(--gold)"></i><div><b>${pinFor(day).name}</b><br>${pinGuess.year}. You said ${pinGuess.guess}.</div></li>` : "");
   $("end").classList.add("show");
 }
 
 // Share text includes a link back to the game. On a real web address it uses that address;
 // anywhere else (e.g. a preview) it is left off.
-const SITE = /^https?:$/.test(location.protocol) && !/claude|localhost|127\.0\.0\.1/.test(location.host) ? location.host : "";
+const SITE = /^https?:$/.test(location.protocol) && !/claude|localhost|127\.0\.0\.1/.test(location.host) ? `https://${location.host}` : "";
 $("share").onclick = async ()=>{
   const sc = correctCount();
   const squares = results.map(x=>x===true?"🟩":x==="t"?"⬛":"🟥").join("");
-  const text = `EraDuel No. ${day+1} ⏳ ${sc}/5\n${squares}` + (SITE ? `\n${SITE}` : "");
+  const pinLine = pinGuess ? `\n📍 ${pinOut(Math.abs(pinGuess.guess - pinGuess.year))}` : "";
+  const text = `EraDuel No. ${day+1} ⏳ ${sc}/5\n${squares}${pinLine}` + (SITE ? `\n${SITE}` : "");
   if (navigator.share && /Android|iPhone|iPad/i.test(navigator.userAgent)){
     try { await navigator.share({text}); return; } catch(e){ if (e && e.name === "AbortError") return; }
   }

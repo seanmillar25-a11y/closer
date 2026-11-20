@@ -73,11 +73,11 @@ window.CLOSER_DAYS = [
     "approx": true
    },
    "R": {
-    "tag": "The present",
-    "name": "Today",
-    "year": "now"
+    "tag": "China",
+    "name": "The Forbidden City is completed",
+    "year": 1420
    },
-   "fact": "Woolly mammoths survived on Wrangel Island in the Arctic until around 2000 BC, after the Great Pyramid was built. That's closer to today than to Göbekli Tepe, one of the oldest known temples."
+   "fact": "Woolly mammoths survived on Wrangel Island in the Arctic until around 2000 BC, after the Great Pyramid was built. That's closer to the building of China's Forbidden City than to Göbekli Tepe, one of the oldest known temples."
   },
   {
    "L": {
@@ -261,11 +261,11 @@ window.CLOSER_DAYS = [
     "year": 1954
    },
    "R": {
-    "tag": "The present",
-    "name": "Today",
-    "year": "now"
+    "tag": "Technology",
+    "name": "Facebook launches",
+    "year": 2004
    },
-   "fact": "Roger Bannister ran the first mile in under four minutes in 1954, closer in time to Munch painting The Scream than to today."
+   "fact": "Roger Bannister ran the first mile in under four minutes in 1954, 61 years after Munch painted The Scream and 50 years before Facebook launched."
   },
   {
    "L": {
@@ -432,11 +432,12 @@ window.CLOSER_DAYS = [
     "approx": true
    },
    "R": {
-    "tag": "The present",
-    "name": "Today",
-    "year": "now"
+    "tag": "Prehistory",
+    "name": "Lucy, the famous early human ancestor",
+    "year": -3200000,
+    "approx": true
    },
-   "fact": "Dinosaurs had been around for over 160 million years when the asteroid hit, about 66 million years ago. The end of their reign is closer to us than to its beginning."
+   "fact": "Dinosaurs had been around for over 160 million years when the asteroid hit, about 66 million years ago. The end of their reign is closer to Lucy, our early ancestor, than to its beginning."
   },
   {
    "L": {
@@ -489,11 +490,11 @@ window.CLOSER_DAYS = [
     "year": 79
    },
    "R": {
-    "tag": "The present",
-    "name": "Today",
-    "year": "now"
+    "tag": "Exploration",
+    "name": "Vasco da Gama reaches India",
+    "year": 1498
    },
-   "fact": "Pompeii was buried by Vesuvius in AD 79, roughly 800 years after Homer's Iliad is thought to have been written down."
+   "fact": "Pompeii was buried by Vesuvius in AD 79, roughly 800 years after Homer's Iliad is thought to have been written down, and over 1,400 years before Vasco da Gama reached India."
   },
   {
    "L": {
@@ -508,11 +509,11 @@ window.CLOSER_DAYS = [
     "approx": true
    },
    "R": {
-    "tag": "The present",
-    "name": "Today",
-    "year": "now"
+    "tag": "England",
+    "name": "The Battle of Hastings",
+    "year": 1066
    },
-   "fact": "Hero of Alexandria designed a coin-operated holy water dispenser in the 1st century AD, only about 260 years after Archimedes died."
+   "fact": "Hero of Alexandria designed a coin-operated holy water dispenser in the 1st century AD, only about 260 years after Archimedes died and around a thousand years before the Battle of Hastings."
   },
   {
    "L": {
@@ -544,11 +545,11 @@ window.CLOSER_DAYS = [
     "year": 1963
    },
    "R": {
-    "tag": "The present",
-    "name": "Today",
-    "year": "now"
+    "tag": "Film",
+    "name": "Toy Story, the first computer-animated feature",
+    "year": 1995
    },
-   "fact": "The Beatles released their first album, Please Please Me, in 1963, only 34 years after the first Academy Awards."
+   "fact": "A close one: the Beatles released their first album, Please Please Me, in 1963, 34 years after the first Academy Awards and 32 years before Toy Story."
   },
   {
    "L": {
@@ -636,11 +637,11 @@ window.CLOSER_DAYS = [
     "year": 1967
    },
    "R": {
-    "tag": "The present",
-    "name": "Today",
-    "year": "now"
+    "tag": "Science",
+    "name": "The Higgs boson is found",
+    "year": 2012
    },
-   "fact": "The first Super Bowl was played in January 1967, 66 years after the first Nobel Prizes were awarded."
+   "fact": "The first Super Bowl was played in January 1967, 66 years after the first Nobel Prizes and 45 years before the Higgs boson was found."
   },
   {
    "L": {
@@ -676,11 +677,12 @@ window.CLOSER_DAYS = [
     "approx": true
    },
    "R": {
-    "tag": "The present",
-    "name": "Today",
-    "year": "now"
+    "tag": "Prehistory",
+    "name": "Homo erectus appears",
+    "year": -1900000,
+    "approx": true
    },
-   "fact": "Insects had been around for well over 200 million years before the first flowers. Flowering plants are closer in time to you than to the first insects."
+   "fact": "Insects had been around for well over 200 million years before the first flowers. Flowering plants are closer in time to Homo erectus, an early human, than to the first insects."
   },
   {
    "L": {
@@ -696,11 +698,11 @@ window.CLOSER_DAYS = [
     "approx": true
    },
    "R": {
-    "tag": "The present",
-    "name": "Today",
-    "year": "now"
+    "tag": "Europe",
+    "name": "Luther's 95 Theses",
+    "year": 1517
    },
-   "fact": "The Epic of Gilgamesh, one of the oldest known stories, was first written down around 2100 BC. That's closer to today than to the beginnings of farming."
+   "fact": "The Epic of Gilgamesh, one of the oldest known stories, was first written down around 2100 BC. That's closer to Luther's 95 Theses than to the beginnings of farming."
   },
   {
    "L": {
@@ -736,11 +738,12 @@ window.CLOSER_DAYS = [
     "approx": true
    },
    "R": {
-    "tag": "The present",
-    "name": "Today",
-    "year": "now"
+    "tag": "Prehistory",
+    "name": "The first stone tools",
+    "year": -3300000,
+    "approx": true
    },
-   "fact": "The first apes appeared around 25 million years ago, long after the supercontinent Pangaea began to break apart."
+   "fact": "The first apes appeared around 25 million years ago, long after the supercontinent Pangaea began to break apart. The first stone tools came about 22 million years later."
   },
   {
    "L": {
@@ -922,11 +925,11 @@ window.CLOSER_DAYS = [
     "year": 1998
    },
    "R": {
-    "tag": "The present",
-    "name": "Today",
-    "year": "now"
+    "tag": "Technology",
+    "name": "Bitcoin is launched",
+    "year": 2009
    },
-   "fact": "Google was founded in 1998, 24 years after Muhammad Ali beat George Foreman in the Rumble in the Jungle."
+   "fact": "Google was founded in 1998, 24 years after Muhammad Ali beat George Foreman in the Rumble in the Jungle and 11 years before Bitcoin launched."
   },
   {
    "L": {
@@ -997,11 +1000,11 @@ window.CLOSER_DAYS = [
     "year": 1922
    },
    "R": {
-    "tag": "The present",
-    "name": "Today",
-    "year": "now"
+    "tag": "Film",
+    "name": "The Simpsons begins as a TV series",
+    "year": 1989
    },
-   "fact": "The Ottoman Empire, founded around 1300, lasted until 1922. Its end is closer to the California Gold Rush than to today."
+   "fact": "A close one: the Ottoman Empire, founded around 1300, lasted until 1922. Its end is slightly closer to The Simpsons' TV debut than to the California Gold Rush."
   },
   {
    "L": {
@@ -1173,11 +1176,11 @@ window.CLOSER_DAYS = [
     "approx": true
    },
    "R": {
-    "tag": "The present",
-    "name": "Today",
-    "year": "now"
+    "tag": "Architecture",
+    "name": "St Basil's Cathedral is completed",
+    "year": 1561
    },
-   "fact": "The last Ice Age ended around 9700 BC, closer in time to the Lascaux cave paintings than to today."
+   "fact": "The last Ice Age ended around 9700 BC, closer in time to the Lascaux cave paintings than to the building of St Basil's Cathedral in Moscow."
   },
   {
    "L": {
@@ -1210,11 +1213,12 @@ window.CLOSER_DAYS = [
     "year": -753
    },
    "R": {
-    "tag": "The present",
-    "name": "Today",
-    "year": "now"
+    "tag": "Literature",
+    "name": "Shakespeare writes Hamlet",
+    "year": 1600,
+    "approx": true
    },
-   "fact": "Rome's legendary founding in 753 BC is closer to the traditional date of the Trojan War than to today."
+   "fact": "Rome's legendary founding in 753 BC is far closer to the traditional date of the Trojan War than to Shakespeare writing Hamlet."
   },
   {
    "L": {
@@ -1230,11 +1234,11 @@ window.CLOSER_DAYS = [
     "approx": true
    },
    "R": {
-    "tag": "The present",
-    "name": "Today",
-    "year": "now"
+    "tag": "Literature",
+    "name": "Shakespeare dies",
+    "year": 1616
    },
-   "fact": "A close one: the first coins were made in Lydia, in today's Turkey, around 600 BC. That's slightly closer to today than to the invention of the wheel."
+   "fact": "A close one: the first coins were made in Lydia, in today's Turkey, around 600 BC. That's closer to Shakespeare's lifetime than to the invention of the wheel."
   }
  ],
  [
@@ -1251,11 +1255,11 @@ window.CLOSER_DAYS = [
     "year": 1512
    },
    "R": {
-    "tag": "The present",
-    "name": "Today",
-    "year": "now"
+    "tag": "Invention",
+    "name": "The first steam locomotive",
+    "year": 1804
    },
-   "fact": "Michelangelo finished painting the Sistine Chapel ceiling in 1512, closer in time to Marco Polo's travels than to today."
+   "fact": "Michelangelo finished painting the Sistine Chapel ceiling in 1512, closer in time to Marco Polo's travels than to the first steam locomotive."
   },
   {
    "L": {
@@ -1306,11 +1310,11 @@ window.CLOSER_DAYS = [
     "approx": true
    },
    "R": {
-    "tag": "The present",
-    "name": "Today",
-    "year": "now"
+    "tag": "Literature",
+    "name": "Pride and Prejudice is published",
+    "year": 1813
    },
-   "fact": "Angkor Wat, built in the 1100s, is closer in time to Constantinople's Hagia Sophia, finished in 537, than to today."
+   "fact": "A close one: Angkor Wat, built in the 1100s, is closer in time to Constantinople's Hagia Sophia, finished in 537, than to Pride and Prejudice."
   },
   {
    "L": {
@@ -1362,11 +1366,11 @@ window.CLOSER_DAYS = [
     "year": 1893
    },
    "R": {
-    "tag": "The present",
-    "name": "Today",
-    "year": "now"
+    "tag": "Music",
+    "name": "MTV goes on air",
+    "year": 1981
    },
-   "fact": "New Zealand became the first country to give women the vote in national elections, in 1893."
+   "fact": "New Zealand became the first country to give women the vote in national elections, in 1893, 104 years after the French Revolution and 88 years before MTV went on air."
   },
   {
    "L": {
@@ -1398,11 +1402,11 @@ window.CLOSER_DAYS = [
     "year": 1992
    },
    "R": {
-    "tag": "The present",
-    "name": "Today",
-    "year": "now"
+    "tag": "Sport",
+    "name": "Michael Phelps wins eight golds in one Games",
+    "year": 2008
    },
-   "fact": "The first text message, 'Merry Christmas', was sent in December 1992, 32 years after the first Paralympic Games in Rome."
+   "fact": "The first text message, 'Merry Christmas', was sent in December 1992, 32 years after the first Paralympic Games and 16 years before Michael Phelps won eight golds."
   },
   {
    "L": {
@@ -1423,4 +1427,97 @@ window.CLOSER_DAYS = [
    "fact": "Wikipedia launched in January 2001, 19 years after Michael Jackson's Thriller came out."
   }
  ]
+];
+// Final round of each day: guess the year.
+window.CLOSER_PINS = [
+ {
+  "tag": "Space",
+  "name": "Sputnik, the first satellite",
+  "year": 1957,
+  "min": 1700
+ },
+ {
+  "tag": "Disaster",
+  "name": "Krakatoa erupts",
+  "year": 1883,
+  "min": 1700
+ },
+ {
+  "tag": "Exploration",
+  "name": "Everest is first climbed",
+  "year": 1953,
+  "min": 1700
+ },
+ {
+  "tag": "Science",
+  "name": "Penicillin is discovered",
+  "year": 1928,
+  "min": 1700
+ },
+ {
+  "tag": "Science",
+  "name": "X-rays are discovered",
+  "year": 1895,
+  "min": 1700
+ },
+ {
+  "tag": "Games",
+  "name": "Pac-Man is released",
+  "year": 1980,
+  "min": 1700
+ },
+ {
+  "tag": "Engineering",
+  "name": "The Suez Canal opens",
+  "year": 1869,
+  "min": 1700
+ },
+ {
+  "tag": "Literature",
+  "name": "The Hobbit is published",
+  "year": 1937,
+  "min": 1700
+ },
+ {
+  "tag": "Space",
+  "name": "Yuri Gagarin goes into space",
+  "year": 1961,
+  "min": 1700
+ },
+ {
+  "tag": "Literature",
+  "name": "Frankenstein is published",
+  "year": 1818,
+  "min": 1700
+ },
+ {
+  "tag": "Games",
+  "name": "The Lego brick is patented",
+  "year": 1958,
+  "min": 1700
+ },
+ {
+  "tag": "America",
+  "name": "The Wall Street Crash",
+  "year": 1929,
+  "min": 1700
+ },
+ {
+  "tag": "Cold War",
+  "name": "The Soviet Union breaks up",
+  "year": 1991,
+  "min": 1700
+ },
+ {
+  "tag": "Music",
+  "name": "Swan Lake premieres",
+  "year": 1877,
+  "min": 1700
+ },
+ {
+  "tag": "Games",
+  "name": "The Rubik's Cube is invented",
+  "year": 1974,
+  "min": 1700
+ }
 ];
