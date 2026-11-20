@@ -23,23 +23,21 @@ window.CLOSER_DAYS = [
   },
   {
    "L": {
-    "tag": "Ancient Egypt",
-    "name": "The Great Pyramid is built",
-    "year": -2560,
-    "approx": true
+    "tag": "Exploration",
+    "name": "Captain Cook reaches Australia",
+    "year": 1770
    },
    "M": {
-    "tag": "Prehistory",
-    "name": "The last woolly mammoths",
-    "year": -2000,
-    "approx": true
+    "tag": "War",
+    "name": "The American Civil War begins",
+    "year": 1861
    },
    "R": {
-    "tag": "Ancient Egypt",
-    "name": "Cleopatra dies",
-    "year": -30
+    "tag": "Technology",
+    "name": "The first email is sent",
+    "year": 1971
    },
-   "fact": "Woolly mammoths survived on Wrangel Island in the Arctic until about 4,000 years ago. They were still alive while the Great Pyramid was being built."
+   "fact": "The American Civil War began in 1861, 91 years after Captain Cook reached Australia's east coast and 110 years before the first email."
   },
   {
    "L": {
@@ -63,27 +61,29 @@ window.CLOSER_DAYS = [
   },
   {
    "L": {
-    "tag": "Invention",
-    "name": "The fax machine is patented",
-    "year": 1843
+    "tag": "Prehistory",
+    "name": "Göbekli Tepe temple is built",
+    "year": -9500,
+    "approx": true
    },
    "M": {
-    "tag": "War",
-    "name": "The American Civil War begins",
-    "year": 1861
+    "tag": "Prehistory",
+    "name": "The last woolly mammoths",
+    "year": -2000,
+    "approx": true
    },
    "R": {
-    "tag": "Technology",
-    "name": "The first email is sent",
-    "year": 1971
+    "tag": "The present",
+    "name": "Today",
+    "year": "now"
    },
-   "fact": "Alexander Bain, a Scottish clockmaker, patented a way of sending images by wire in 1843. The fax is older than the telephone."
+   "fact": "Woolly mammoths survived on Wrangel Island in the Arctic until around 2000 BC, after the Great Pyramid was built. That's closer to today than to Göbekli Tepe, one of the oldest known temples."
   },
   {
    "L": {
-    "tag": "Education",
-    "name": "Teaching begins at Oxford",
-    "year": 1096
+    "tag": "Empires",
+    "name": "Genghis Khan becomes Great Khan",
+    "year": 1206
    },
    "M": {
     "tag": "The Americas",
@@ -91,11 +91,11 @@ window.CLOSER_DAYS = [
     "year": 1325
    },
    "R": {
-    "tag": "Exploration",
-    "name": "Columbus reaches the Americas",
-    "year": 1492
+    "tag": "War",
+    "name": "Joan of Arc is executed",
+    "year": 1431
    },
-   "fact": "The Aztec capital, on the site of today's Mexico City, was founded only 167 years before Columbus arrived. Teaching at Oxford had begun more than two centuries earlier."
+   "fact": "A close one: the Aztecs founded Tenochtitlan, on the site of today's Mexico City, in 1325, 119 years after Genghis Khan became Great Khan and 106 years before Joan of Arc was executed."
   }
  ],
  [
@@ -114,11 +114,11 @@ window.CLOSER_DAYS = [
    },
    "R": {
     "tag": "Prehistory",
-    "name": "T. rex roams",
-    "year": -67000000,
+    "name": "The Great Dying wipes out most life",
+    "year": -252000000,
     "approx": true
    },
-   "fact": "Sharks are older than trees. The oldest undisputed shark scales are about 420 million years old, while the first trees appeared around 385 million years ago."
+   "fact": "Sharks are older than trees. The oldest undisputed shark scales are about 420 million years old, while the first trees grew around 385 million years ago."
   },
   {
    "L": {
@@ -140,9 +140,9 @@ window.CLOSER_DAYS = [
   },
   {
    "L": {
-    "tag": "Japan",
-    "name": "The last samurai uprising",
-    "year": 1877
+    "tag": "Paris",
+    "name": "Napoleon crowns himself emperor",
+    "year": 1804
    },
    "M": {
     "tag": "Games",
@@ -154,7 +154,7 @@ window.CLOSER_DAYS = [
     "name": "Super Mario Bros. is released",
     "year": 1985
    },
-   "fact": "Nintendo started out making hand-made playing cards, just 12 years after Japan's last samurai rebellion."
+   "fact": "Nintendo was founded in 1889 to make hand-made playing cards, 85 years after Napoleon crowned himself emperor."
   },
   {
    "L": {
@@ -176,9 +176,9 @@ window.CLOSER_DAYS = [
   },
   {
    "L": {
-    "tag": "Sport",
-    "name": "The first modern Olympics",
-    "year": 1896
+    "tag": "Motoring",
+    "name": "Karl Benz patents the motor car",
+    "year": 1886
    },
    "M": {
     "tag": "Sport",
@@ -186,19 +186,19 @@ window.CLOSER_DAYS = [
     "year": 1930
    },
    "R": {
-    "tag": "Sport",
-    "name": "The first Super Bowl",
-    "year": 1967
+    "tag": "Games",
+    "name": "Space Invaders is released",
+    "year": 1978
    },
-   "fact": "A close one. The first football World Cup, held in Uruguay in 1930, came 34 years after the first modern Olympics and 37 years before the first Super Bowl."
+   "fact": "A close one: the first football World Cup, held in Uruguay in 1930, came 44 years after Karl Benz patented his motor car and 48 years before Space Invaders."
   }
  ],
  [
   {
    "L": {
-    "tag": "Rome",
-    "name": "Hadrian's Wall is begun",
-    "year": 122
+    "tag": "Ancient Greece",
+    "name": "The Parthenon is completed",
+    "year": -432
    },
    "M": {
     "tag": "The Americas",
@@ -211,13 +211,13 @@ window.CLOSER_DAYS = [
     "name": "Today",
     "year": "now"
    },
-   "fact": "Machu Picchu looks ancient, but the Inca built it around 1450. That's closer to today than to the building of Hadrian's Wall."
+   "fact": "Machu Picchu looks ancient, but the Inca built it around 1450. That's much closer to today than to the building of the Parthenon in Athens."
   },
   {
    "L": {
-    "tag": "War",
-    "name": "The First World War begins",
-    "year": 1914
+    "tag": "Science",
+    "name": "The periodic table",
+    "year": 1869
    },
    "M": {
     "tag": "Space",
@@ -229,13 +229,13 @@ window.CLOSER_DAYS = [
     "name": "Pluto loses planet status",
     "year": 2006
    },
-   "fact": "Pluto was officially a planet for 76 years, from its discovery in 1930 to its reclassification in 2006."
+   "fact": "Pluto was discovered in 1930, 61 years after Mendeleev drew up the periodic table, and counted as a planet for 76 years until 2006."
   },
   {
    "L": {
     "tag": "Space",
-    "name": "The Moon landing",
-    "year": 1969
+    "name": "The Hubble Space Telescope launches",
+    "year": 1990
    },
    "M": {
     "tag": "Games",
@@ -243,17 +243,17 @@ window.CLOSER_DAYS = [
     "year": 1997
    },
    "R": {
-    "tag": "Technology",
-    "name": "The first iPhone",
-    "year": 2007
+    "tag": "Science",
+    "name": "The human genome is sequenced",
+    "year": 2003
    },
-   "fact": "The original Grand Theft Auto was made in Dundee by DMA Design and released in 1997, ten years before the first iPhone."
+   "fact": "The original Grand Theft Auto was made in Dundee by DMA Design and released in 1997, seven years after Hubble launched and six years before the human genome was sequenced."
   },
   {
    "L": {
-    "tag": "Flight",
-    "name": "The Wright brothers fly",
-    "year": 1903
+    "tag": "Art",
+    "name": "Munch paints The Scream",
+    "year": 1893
    },
    "M": {
     "tag": "Sport",
@@ -265,13 +265,13 @@ window.CLOSER_DAYS = [
     "name": "Today",
     "year": "now"
    },
-   "fact": "Roger Bannister ran the first mile in under four minutes in 1954, only 51 years after the Wright brothers first flew."
+   "fact": "Roger Bannister ran the first mile in under four minutes in 1954, closer in time to Munch painting The Scream than to today."
   },
   {
    "L": {
     "tag": "Ancient Egypt",
-    "name": "The Great Pyramid is built",
-    "year": -2560,
+    "name": "Ramesses II dies",
+    "year": -1213,
     "approx": true
    },
    "M": {
@@ -280,19 +280,19 @@ window.CLOSER_DAYS = [
     "year": -776
    },
    "R": {
-    "tag": "The present",
-    "name": "Today",
-    "year": "now"
+    "tag": "Ancient Greece",
+    "name": "Socrates dies",
+    "year": -399
    },
-   "fact": "The first recorded Olympics, in 776 BC, were closer in time to the Great Pyramid than to us. Ancient history covers a lot of time."
+   "fact": "A close one: the first recorded Olympics, in 776 BC, are slightly closer to the death of Socrates than to the death of Ramesses II."
   }
  ],
  [
   {
    "L": {
-    "tag": "Literature",
-    "name": "Shakespeare dies",
-    "year": 1616
+    "tag": "Monarchy",
+    "name": "Elizabeth I is crowned",
+    "year": 1559
    },
    "M": {
     "tag": "Education",
@@ -300,17 +300,17 @@ window.CLOSER_DAYS = [
     "year": 1636
    },
    "R": {
-    "tag": "Science",
-    "name": "Newton's Principia is published",
-    "year": 1687
+    "tag": "Paris",
+    "name": "Versailles becomes the royal palace",
+    "year": 1682
    },
-   "fact": "Harvard was founded just 20 years after Shakespeare died, and 51 years before Newton set out his laws of motion."
+   "fact": "Harvard was founded in 1636, closer in time to Louis XIV moving his court to Versailles than to Elizabeth I's coronation."
   },
   {
    "L": {
-    "tag": "War",
-    "name": "The Battle of Waterloo",
-    "year": 1815
+    "tag": "Literature",
+    "name": "A Christmas Carol is published",
+    "year": 1843
    },
    "M": {
     "tag": "London",
@@ -322,7 +322,7 @@ window.CLOSER_DAYS = [
     "name": "The telephone is patented",
     "year": 1876
    },
-   "fact": "Big Ben first rang out in 1859, just 17 years before Edinburgh-born Alexander Graham Bell patented the telephone."
+   "fact": "Big Ben first rang out in 1859, 16 years after Dickens's A Christmas Carol and 17 years before Edinburgh-born Alexander Graham Bell patented the telephone."
   },
   {
    "L": {
@@ -374,19 +374,19 @@ window.CLOSER_DAYS = [
     "year": 1886
    },
    "R": {
-    "tag": "Flight",
-    "name": "The Wright brothers fly",
-    "year": 1903
+    "tag": "Science",
+    "name": "Einstein's special relativity",
+    "year": 1905
    },
-   "fact": "A close one: Coca-Cola came 21 years after the American Civil War ended and 17 years before the Wright brothers flew."
+   "fact": "A close one: Coca-Cola was invented in 1886, 21 years after the American Civil War ended and 19 years before Einstein's special relativity."
   }
  ],
  [
   {
    "L": {
-    "tag": "Ancient Egypt",
-    "name": "Cleopatra dies",
-    "year": -30
+    "tag": "Rome",
+    "name": "Hannibal crosses the Alps",
+    "year": -218
    },
    "M": {
     "tag": "Education",
@@ -398,13 +398,13 @@ window.CLOSER_DAYS = [
     "name": "Today",
     "year": "now"
    },
-   "fact": "Teaching at Oxford began in 1096. Oxford University is closer in time to you than it is to Cleopatra."
+   "fact": "Teaching at Oxford began in 1096. Oxford is closer in time to you than to Hannibal crossing the Alps with his elephants."
   },
   {
    "L": {
-    "tag": "Science",
-    "name": "Darwin's Origin of Species",
-    "year": 1859
+    "tag": "Literature",
+    "name": "Moby-Dick is published",
+    "year": 1851
    },
    "M": {
     "tag": "Invention",
@@ -416,7 +416,7 @@ window.CLOSER_DAYS = [
     "name": "The Ford Model T",
     "year": 1908
    },
-   "fact": "Edison's practical light bulb arrived 20 years after Darwin's big book and 29 years before the Model T."
+   "fact": "Edison's practical light bulb arrived in 1879, 28 years after Moby-Dick and 29 years before the Model T."
   },
   {
    "L": {
@@ -427,8 +427,8 @@ window.CLOSER_DAYS = [
    },
    "M": {
     "tag": "Prehistory",
-    "name": "T. rex roams",
-    "year": -67000000,
+    "name": "The asteroid ends the dinosaurs",
+    "year": -66000000,
     "approx": true
    },
    "R": {
@@ -436,13 +436,13 @@ window.CLOSER_DAYS = [
     "name": "Today",
     "year": "now"
    },
-   "fact": "Dinosaurs ruled for so long that T. rex is far closer to us than to the first dinosaurs."
+   "fact": "Dinosaurs had been around for over 160 million years when the asteroid hit, about 66 million years ago. The end of their reign is closer to us than to its beginning."
   },
   {
    "L": {
-    "tag": "Exploration",
-    "name": "Columbus reaches the Americas",
-    "year": 1492
+    "tag": "Science",
+    "name": "Copernicus puts the Sun at the centre",
+    "year": 1543
    },
    "M": {
     "tag": "Exploration",
@@ -450,11 +450,11 @@ window.CLOSER_DAYS = [
     "year": 1620
    },
    "R": {
-    "tag": "America",
-    "name": "The Declaration of Independence",
-    "year": 1776
+    "tag": "Europe",
+    "name": "Peter the Great founds St Petersburg",
+    "year": 1703
    },
-   "fact": "The Mayflower landed 128 years after Columbus and 156 years before US independence."
+   "fact": "The Mayflower landed in 1620, 77 years after Copernicus put the Sun at the centre of the universe and 83 years before St Petersburg was founded."
   },
   {
    "L": {
@@ -497,10 +497,9 @@ window.CLOSER_DAYS = [
   },
   {
    "L": {
-    "tag": "Ancient Egypt",
-    "name": "The Great Pyramid is built",
-    "year": -2560,
-    "approx": true
+    "tag": "Science",
+    "name": "Archimedes dies",
+    "year": -212
    },
    "M": {
     "tag": "Invention",
@@ -513,14 +512,13 @@ window.CLOSER_DAYS = [
     "name": "Today",
     "year": "now"
    },
-   "fact": "Hero of Alexandria designed a coin-operated holy water dispenser in the 1st century AD. The vending machine is closer to the pyramids than you might think, but still closer to you."
+   "fact": "Hero of Alexandria designed a coin-operated holy water dispenser in the 1st century AD, only about 260 years after Archimedes died."
   },
   {
    "L": {
-    "tag": "Vikings",
-    "name": "Vikings reach North America",
-    "year": 1000,
-    "approx": true
+    "tag": "Empires",
+    "name": "Charlemagne is crowned emperor",
+    "year": 800
    },
    "M": {
     "tag": "Law",
@@ -528,11 +526,11 @@ window.CLOSER_DAYS = [
     "year": 1215
    },
    "R": {
-    "tag": "Exploration",
-    "name": "Columbus reaches the Americas",
-    "year": 1492
+    "tag": "London",
+    "name": "The Great Fire of London",
+    "year": 1666
    },
-   "fact": "Leif Erikson's Vikings landed in Newfoundland around the year 1000. Magna Carta came about 215 years later, and Columbus about 490."
+   "fact": "Magna Carta was sealed in 1215, 415 years after Charlemagne was crowned emperor and 451 years before the Great Fire of London."
   },
   {
    "L": {
@@ -554,9 +552,9 @@ window.CLOSER_DAYS = [
   },
   {
    "L": {
-    "tag": "Film",
-    "name": "Star Wars is released",
-    "year": 1977
+    "tag": "Music",
+    "name": "The Sony Walkman goes on sale",
+    "year": 1979
    },
    "M": {
     "tag": "Technology",
@@ -568,15 +566,15 @@ window.CLOSER_DAYS = [
     "name": "Today",
     "year": "now"
    },
-   "fact": "A close call: YouTube launched in 2005, 28 years after Star Wars first hit cinemas."
+   "fact": "A close call: YouTube launched in 2005, 26 years after the Sony Walkman first went on sale."
   }
  ],
  [
   {
    "L": {
-    "tag": "Invention",
-    "name": "The first lighter",
-    "year": 1823
+    "tag": "War",
+    "name": "The Battle of Waterloo",
+    "year": 1815
    },
    "M": {
     "tag": "Invention",
@@ -588,7 +586,7 @@ window.CLOSER_DAYS = [
     "name": "Queen Victoria is crowned",
     "year": 1838
    },
-   "fact": "Johann Döbereiner's lighter, the 'Döbereiner's lamp', came in 1823. That's three years before John Walker invented the friction match."
+   "fact": "John Walker invented the friction match in 1826, 11 years after the Battle of Waterloo and 12 years before Queen Victoria was crowned."
   },
   {
    "L": {
@@ -602,17 +600,17 @@ window.CLOSER_DAYS = [
     "year": 1858
    },
    "R": {
-    "tag": "Invention",
-    "name": "The telephone is patented",
-    "year": 1876
+    "tag": "Flight",
+    "name": "The Wright brothers fly",
+    "year": 1903
    },
    "fact": "For almost 50 years people opened tin cans with hammers and chisels. The dedicated can opener didn't appear until 1858."
   },
   {
    "L": {
-    "tag": "Disaster",
-    "name": "The Titanic sinks",
-    "year": 1912
+    "tag": "Literature",
+    "name": "Alice in Wonderland is published",
+    "year": 1865
    },
    "M": {
     "tag": "Invention",
@@ -620,17 +618,17 @@ window.CLOSER_DAYS = [
     "year": 1926
    },
    "R": {
-    "tag": "Space",
-    "name": "The Moon landing",
-    "year": 1969
+    "tag": "Games",
+    "name": "The Game Boy goes on sale",
+    "year": 1989
    },
-   "fact": "John Logie Baird, from Helensburgh in Scotland, gave the first public demonstration of television in 1926."
+   "fact": "John Logie Baird, from Helensburgh in Scotland, gave the first public demonstration of television in 1926, 61 years after Alice in Wonderland was published."
   },
   {
    "L": {
-    "tag": "Sport",
-    "name": "The first modern Olympics",
-    "year": 1896
+    "tag": "Science",
+    "name": "The first Nobel Prizes",
+    "year": 1901
    },
    "M": {
     "tag": "Sport",
@@ -642,13 +640,13 @@ window.CLOSER_DAYS = [
     "name": "Today",
     "year": "now"
    },
-   "fact": "The first Super Bowl was played in January 1967, 71 years after the first modern Olympics in Athens."
+   "fact": "The first Super Bowl was played in January 1967, 66 years after the first Nobel Prizes were awarded."
   },
   {
    "L": {
-    "tag": "Space",
-    "name": "The Moon landing",
-    "year": 1969
+    "tag": "Sport",
+    "name": "The Fosbury Flop wins Olympic gold",
+    "year": 1968
    },
    "M": {
     "tag": "Science",
@@ -660,15 +658,15 @@ window.CLOSER_DAYS = [
     "name": "Today",
     "year": "now"
    },
-   "fact": "A close call: Dolly, cloned at the Roslin Institute near Edinburgh, was born in 1996, 27 years after the Moon landing."
+   "fact": "A close call: Dolly, cloned at the Roslin Institute near Edinburgh, was born in 1996, 28 years after Dick Fosbury flopped his way to Olympic gold."
   }
  ],
  [
   {
    "L": {
     "tag": "Prehistory",
-    "name": "Stegosaurus roams",
-    "year": -150000000,
+    "name": "The first insects",
+    "year": -400000000,
     "approx": true
    },
    "M": {
@@ -678,24 +676,23 @@ window.CLOSER_DAYS = [
     "approx": true
    },
    "R": {
-    "tag": "Prehistory",
-    "name": "T. rex roams",
-    "year": -67000000,
-    "approx": true
+    "tag": "The present",
+    "name": "Today",
+    "year": "now"
    },
-   "fact": "Stegosaurus probably never saw a flower. Flowering plants appeared later, and T. rex lived among them."
+   "fact": "Insects had been around for well over 200 million years before the first flowers. Flowering plants are closer in time to you than to the first insects."
   },
   {
    "L": {
     "tag": "Prehistory",
-    "name": "The last Ice Age ends",
-    "year": -9700,
+    "name": "Farming begins",
+    "year": -10000,
     "approx": true
    },
    "M": {
-    "tag": "Ancient Egypt",
-    "name": "The Great Pyramid is built",
-    "year": -2560,
+    "tag": "Literature",
+    "name": "The Epic of Gilgamesh is written down",
+    "year": -2100,
     "approx": true
    },
    "R": {
@@ -703,27 +700,7 @@ window.CLOSER_DAYS = [
     "name": "Today",
     "year": "now"
    },
-   "fact": "The Great Pyramid is closer in time to you than to the end of the last Ice Age."
-  },
-  {
-   "L": {
-    "tag": "Invention",
-    "name": "Writing is invented",
-    "year": -3200,
-    "approx": true
-   },
-   "M": {
-    "tag": "Ancient Egypt",
-    "name": "The Great Pyramid is built",
-    "year": -2560,
-    "approx": true
-   },
-   "R": {
-    "tag": "Ancient Egypt",
-    "name": "Cleopatra dies",
-    "year": -30
-   },
-   "fact": "The Great Pyramid was built about 640 years after writing first appeared in Mesopotamia, and about 2,500 years before Cleopatra."
+   "fact": "The Epic of Gilgamesh, one of the oldest known stories, was first written down around 2100 BC. That's closer to today than to the beginnings of farming."
   },
   {
    "L": {
@@ -748,8 +725,8 @@ window.CLOSER_DAYS = [
   {
    "L": {
     "tag": "Prehistory",
-    "name": "The asteroid ends the dinosaurs",
-    "year": -66000000,
+    "name": "Pangaea begins to break apart",
+    "year": -175000000,
     "approx": true
    },
    "M": {
@@ -763,14 +740,33 @@ window.CLOSER_DAYS = [
     "name": "Today",
     "year": "now"
    },
-   "fact": "The first apes appeared around 25 million years ago. That's much closer to us than to the asteroid that ended the dinosaurs."
+   "fact": "The first apes appeared around 25 million years ago, long after the supercontinent Pangaea began to break apart."
+  },
+  {
+   "L": {
+    "tag": "Ancient Greece",
+    "name": "Alexander the Great dies",
+    "year": -323
+   },
+   "M": {
+    "tag": "China",
+    "name": "The Terracotta Army is buried",
+    "year": -210,
+    "approx": true
+   },
+   "R": {
+    "tag": "Rome",
+    "name": "Julius Caesar is assassinated",
+    "year": -44
+   },
+   "fact": "China's Terracotta Army was buried around 210 BC with the First Emperor, about 110 years after Alexander the Great died."
   }
  ],
  [
   {
    "L": {
-    "tag": "Education",
-    "name": "Teaching begins at Oxford",
+    "tag": "War",
+    "name": "The First Crusade sets out",
     "year": 1096
    },
    "M": {
@@ -779,11 +775,11 @@ window.CLOSER_DAYS = [
     "year": 1209
    },
    "R": {
-    "tag": "Exploration",
-    "name": "Columbus reaches the Americas",
-    "year": 1492
+    "tag": "Disaster",
+    "name": "The Black Death reaches Europe",
+    "year": 1347
    },
-   "fact": "Cambridge was founded in 1209, traditionally by scholars who left Oxford after a dispute with the townspeople."
+   "fact": "Cambridge was founded in 1209, traditionally by scholars who left Oxford, 113 years after the First Crusade set out."
   },
   {
    "L": {
@@ -799,16 +795,16 @@ window.CLOSER_DAYS = [
    },
    "R": {
     "tag": "Music",
-    "name": "Mozart is born",
-    "year": 1756
+    "name": "Handel's Messiah premieres",
+    "year": 1742
    },
-   "fact": "Galileo first turned a telescope to the sky in 1609, about 154 years after the Gutenberg Bible was printed and 147 years before Mozart was born."
+   "fact": "Galileo first turned a telescope to the sky in 1609, slightly closer in time to Handel's Messiah than to the Gutenberg Bible."
   },
   {
    "L": {
-    "tag": "Sport",
-    "name": "Football's first official rules",
-    "year": 1863
+    "tag": "Invention",
+    "name": "The first lighter",
+    "year": 1823
    },
    "M": {
     "tag": "Sport",
@@ -816,17 +812,17 @@ window.CLOSER_DAYS = [
     "year": 1891
    },
    "R": {
-    "tag": "Sport",
-    "name": "The first football World Cup",
-    "year": 1930
+    "tag": "America",
+    "name": "President Kennedy is assassinated",
+    "year": 1963
    },
-   "fact": "Basketball was invented in 1891 by James Naismith, a Canadian teacher in Massachusetts, 28 years after football's first official rules were agreed in London."
+   "fact": "Basketball was invented in 1891 by James Naismith, a Canadian teacher in Massachusetts, 68 years after the first lighter."
   },
   {
    "L": {
-    "tag": "Literature",
-    "name": "Shakespeare dies",
-    "year": 1616
+    "tag": "Exploration",
+    "name": "The first voyage around the world ends",
+    "year": 1522
    },
    "M": {
     "tag": "Science",
@@ -838,13 +834,13 @@ window.CLOSER_DAYS = [
     "name": "Darwin's Origin of Species",
     "year": 1859
    },
-   "fact": "Newton's Principia appeared 71 years after Shakespeare died, and 172 years before Darwin's Origin of Species."
+   "fact": "Newton's Principia appeared in 1687, 165 years after the first voyage around the world ended and 172 years before Darwin's Origin of Species."
   },
   {
    "L": {
-    "tag": "Space",
-    "name": "The Moon landing",
-    "year": 1969
+    "tag": "Film",
+    "name": "Jaws is released",
+    "year": 1975
    },
    "M": {
     "tag": "Technology",
@@ -852,19 +848,19 @@ window.CLOSER_DAYS = [
     "year": 1989
    },
    "R": {
-    "tag": "Technology",
-    "name": "The first iPhone",
-    "year": 2007
+    "tag": "Europe",
+    "name": "Euro notes and coins arrive",
+    "year": 2002
    },
-   "fact": "A close one: Tim Berners-Lee proposed the World Wide Web in 1989, 20 years after the Moon landing and 18 years before the iPhone."
+   "fact": "A close one: Tim Berners-Lee proposed the World Wide Web in 1989, 14 years after Jaws and 13 years before euro notes and coins arrived."
   }
  ],
  [
   {
    "L": {
-    "tag": "War",
-    "name": "The American Civil War ends",
-    "year": 1865
+    "tag": "Sport",
+    "name": "Football's first official rules",
+    "year": 1863
    },
    "M": {
     "tag": "America",
@@ -898,9 +894,9 @@ window.CLOSER_DAYS = [
   },
   {
    "L": {
-    "tag": "Games",
-    "name": "Tetris is created",
-    "year": 1984
+    "tag": "Disaster",
+    "name": "The Chernobyl disaster",
+    "year": 1986
    },
    "M": {
     "tag": "Sport",
@@ -912,13 +908,13 @@ window.CLOSER_DAYS = [
     "name": "Today",
     "year": "now"
    },
-   "fact": "Usain Bolt ran 100 metres in 9.58 seconds at the 2009 World Championships in Berlin, the city where the Wall had fallen 20 years earlier."
+   "fact": "Usain Bolt ran 100 metres in 9.58 seconds at the 2009 World Championships in Berlin, 23 years after the Chernobyl disaster."
   },
   {
    "L": {
-    "tag": "Technology",
-    "name": "The first email is sent",
-    "year": 1971
+    "tag": "Sport",
+    "name": "The Rumble in the Jungle",
+    "year": 1974
    },
    "M": {
     "tag": "Technology",
@@ -930,7 +926,7 @@ window.CLOSER_DAYS = [
     "name": "Today",
     "year": "now"
    },
-   "fact": "A close call: Google was founded in 1998, 27 years after the first email was sent."
+   "fact": "Google was founded in 1998, 24 years after Muhammad Ali beat George Foreman in the Rumble in the Jungle."
   },
   {
    "L": {
@@ -939,8 +935,8 @@ window.CLOSER_DAYS = [
     "year": 1945
    },
    "M": {
-    "tag": "Space",
-    "name": "The Moon landing",
+    "tag": "Music",
+    "name": "Woodstock",
     "year": 1969
    },
    "R": {
@@ -948,7 +944,7 @@ window.CLOSER_DAYS = [
     "name": "The Channel Tunnel opens",
     "year": 1994
    },
-   "fact": "The closest call of the day: the Moon landing came 24 years after the Second World War ended and 25 years before the Channel Tunnel opened."
+   "fact": "The closest call of the day: Woodstock came 24 years after the Second World War ended and 25 years before the Channel Tunnel opened."
   }
  ],
  [
@@ -973,9 +969,9 @@ window.CLOSER_DAYS = [
   },
   {
    "L": {
-    "tag": "Rome",
-    "name": "Julius Caesar is assassinated",
-    "year": -44
+    "tag": "Ancient Greece",
+    "name": "The Battle of Marathon",
+    "year": -490
    },
    "M": {
     "tag": "Empires",
@@ -987,13 +983,13 @@ window.CLOSER_DAYS = [
     "name": "Today",
     "year": "now"
    },
-   "fact": "The Roman Empire survived in the east until the Ottomans took Constantinople in 1453. That end is closer to today than to Julius Caesar's assassination."
+   "fact": "The Roman Empire survived in the east until 1453, when the Ottomans took Constantinople. That's closer to today than to the Battle of Marathon."
   },
   {
    "L": {
-    "tag": "Science",
-    "name": "Darwin's Origin of Species",
-    "year": 1859
+    "tag": "America",
+    "name": "The California Gold Rush begins",
+    "year": 1848
    },
    "M": {
     "tag": "Empires",
@@ -1005,7 +1001,28 @@ window.CLOSER_DAYS = [
     "name": "Today",
     "year": "now"
    },
-   "fact": "The Ottoman Empire, founded around 1300, lasted until 1922. Its end is closer to Darwin's Origin of Species than to today."
+   "fact": "The Ottoman Empire, founded around 1300, lasted until 1922. Its end is closer to the California Gold Rush than to today."
+  },
+  {
+   "L": {
+    "tag": "Law",
+    "name": "The Code of Hammurabi",
+    "year": -1754,
+    "approx": true
+   },
+   "M": {
+    "tag": "Ancient Egypt",
+    "name": "Tutankhamun dies",
+    "year": -1323,
+    "approx": true
+   },
+   "R": {
+    "tag": "Invention",
+    "name": "The Phoenician alphabet",
+    "year": -1050,
+    "approx": true
+   },
+   "fact": "Tutankhamun died around 1323 BC, closer in time to the Phoenician alphabet than to Hammurabi's code of laws."
   },
   {
    "L": {
@@ -1025,34 +1042,14 @@ window.CLOSER_DAYS = [
     "year": 1492
    },
    "fact": "Leif Erikson's Vikings reached North America around the year 1000, slightly closer to Columbus than to the fall of the Western Roman Empire in 476."
-  },
-  {
-   "L": {
-    "tag": "Ancient Egypt",
-    "name": "The Great Pyramid is built",
-    "year": -2560,
-    "approx": true
-   },
-   "M": {
-    "tag": "Ancient Egypt",
-    "name": "Tutankhamun dies",
-    "year": -1323,
-    "approx": true
-   },
-   "R": {
-    "tag": "Ancient Egypt",
-    "name": "Cleopatra dies",
-    "year": -30
-   },
-   "fact": "Very close: Tutankhamun is about 1,240 years after the Great Pyramid and about 1,290 years before Cleopatra. Ancient Egypt lasted a very long time."
   }
  ],
  [
   {
    "L": {
-    "tag": "America",
-    "name": "The Declaration of Independence",
-    "year": 1776
+    "tag": "Music",
+    "name": "Vivaldi's Four Seasons is published",
+    "year": 1725
    },
    "M": {
     "tag": "Invention",
@@ -1061,17 +1058,17 @@ window.CLOSER_DAYS = [
     "approx": true
    },
    "R": {
-    "tag": "Space",
-    "name": "The Moon landing",
-    "year": 1969
+    "tag": "America",
+    "name": "The Empire State Building opens",
+    "year": 1931
    },
-   "fact": "Nicéphore Niépce took the oldest surviving camera photograph, a view from a window in France, around 1826 or 1827."
+   "fact": "Nicéphore Niépce took the oldest surviving camera photograph around 1826, about a century after Vivaldi's Four Seasons was published."
   },
   {
    "L": {
-    "tag": "Exploration",
-    "name": "Columbus reaches the Americas",
-    "year": 1492
+    "tag": "Science",
+    "name": "The first vaccine",
+    "year": 1796
    },
    "M": {
     "tag": "Exploration",
@@ -1079,17 +1076,17 @@ window.CLOSER_DAYS = [
     "year": 1820
    },
    "R": {
-    "tag": "Space",
-    "name": "The Moon landing",
-    "year": 1969
+    "tag": "Invention",
+    "name": "The fax machine is patented",
+    "year": 1843
    },
-   "fact": "Nobody had seen Antarctica until 1820. That's closer to the Moon landing than to Columbus."
+   "fact": "Nobody had seen Antarctica until 1820, 24 years after Edward Jenner gave the first vaccination."
   },
   {
    "L": {
-    "tag": "Disaster",
-    "name": "The Titanic sinks",
-    "year": 1912
+    "tag": "Ancient Egypt",
+    "name": "Tutankhamun's tomb is discovered",
+    "year": 1922
    },
    "M": {
     "tag": "Music",
@@ -1105,9 +1102,9 @@ window.CLOSER_DAYS = [
   },
   {
    "L": {
-    "tag": "War",
-    "name": "The Second World War ends",
-    "year": 1945
+    "tag": "Literature",
+    "name": "Nineteen Eighty-Four is published",
+    "year": 1949
    },
    "M": {
     "tag": "Technology",
@@ -1119,13 +1116,13 @@ window.CLOSER_DAYS = [
     "name": "The first iPhone",
     "year": 2007
    },
-   "fact": "Motorola's Martin Cooper made the first handheld mobile phone call in 1973, closer to the end of the Second World War than to the iPhone."
+   "fact": "Motorola's Martin Cooper made the first handheld mobile phone call in 1973, 24 years after Orwell's Nineteen Eighty-Four was published."
   },
   {
    "L": {
-    "tag": "War",
-    "name": "The Battle of Waterloo",
-    "year": 1815
+    "tag": "Invention",
+    "name": "Morse sends his famous telegraph",
+    "year": 1844
    },
    "M": {
     "tag": "Motoring",
@@ -1133,19 +1130,19 @@ window.CLOSER_DAYS = [
     "year": 1896
    },
    "R": {
-    "tag": "Space",
-    "name": "The Moon landing",
-    "year": 1969
+    "tag": "Technology",
+    "name": "The ENIAC computer is unveiled",
+    "year": 1946
    },
-   "fact": "In January 1896 Walter Arnold was fined for driving at 8mph in Kent, four times the speed limit, in what is often called the first speeding ticket. A policeman on a bicycle caught him."
+   "fact": "A close one: in 1896 Walter Arnold was fined for driving at 8mph in Kent, four times the speed limit, in what is often called the first speeding ticket."
   }
  ],
  [
   {
    "L": {
-    "tag": "Prehistory",
-    "name": "The last Ice Age ends",
-    "year": -9700,
+    "tag": "Invention",
+    "name": "Writing is invented",
+    "year": -3200,
     "approx": true
    },
    "M": {
@@ -1155,11 +1152,12 @@ window.CLOSER_DAYS = [
     "approx": true
    },
    "R": {
-    "tag": "Ancient Egypt",
-    "name": "Cleopatra dies",
-    "year": -30
+    "tag": "China",
+    "name": "Confucius is born",
+    "year": -551,
+    "approx": true
    },
-   "fact": "Stonehenge's big sarsen stones went up around 2500 BC, about the same time as the Great Pyramid, and far later than the end of the Ice Age."
+   "fact": "Stonehenge's great sarsen stones went up around 2500 BC, about 700 years after writing first appeared in Mesopotamia."
   },
   {
    "L": {
@@ -1183,28 +1181,27 @@ window.CLOSER_DAYS = [
   },
   {
    "L": {
-    "tag": "Ancient Egypt",
-    "name": "The Great Pyramid is built",
-    "year": -2560,
-    "approx": true
+    "tag": "Rome",
+    "name": "Spartacus leads a slave revolt",
+    "year": -73
    },
    "M": {
     "tag": "Rome",
-    "name": "Vesuvius buries Pompeii",
-    "year": 79
+    "name": "The Colosseum opens",
+    "year": 80
    },
    "R": {
     "tag": "The present",
     "name": "Today",
     "year": "now"
    },
-   "fact": "Pompeii was destroyed in AD 79, more than 2,600 years after the Great Pyramid was built."
+   "fact": "The Colosseum in Rome opened in AD 80, about 150 years after Spartacus led his slave revolt."
   },
   {
    "L": {
-    "tag": "Ancient Egypt",
-    "name": "Tutankhamun dies",
-    "year": -1323,
+    "tag": "Ancient Greece",
+    "name": "The Trojan War (by tradition)",
+    "year": -1184,
     "approx": true
    },
    "M": {
@@ -1213,38 +1210,40 @@ window.CLOSER_DAYS = [
     "year": -753
    },
    "R": {
-    "tag": "Ancient Egypt",
-    "name": "Cleopatra dies",
-    "year": -30
+    "tag": "The present",
+    "name": "Today",
+    "year": "now"
    },
-   "fact": "Rome's traditional founding date of 753 BC is closer to Tutankhamun than to Cleopatra, who met Julius Caesar."
+   "fact": "Rome's legendary founding in 753 BC is closer to the traditional date of the Trojan War than to today."
   },
   {
    "L": {
     "tag": "Invention",
-    "name": "Writing is invented",
-    "year": -3200,
+    "name": "The wheel is invented",
+    "year": -3500,
     "approx": true
    },
    "M": {
-    "tag": "Ancient Greece",
-    "name": "The first Olympic Games",
-    "year": -776
+    "tag": "Invention",
+    "name": "The first coins",
+    "year": -600,
+    "approx": true
    },
    "R": {
     "tag": "The present",
     "name": "Today",
     "year": "now"
    },
-   "fact": "A close one: the first recorded Olympics, in 776 BC, came about 2,400 years after writing was invented in Mesopotamia."
+   "fact": "A close one: the first coins were made in Lydia, in today's Turkey, around 600 BC. That's slightly closer to today than to the invention of the wheel."
   }
  ],
  [
   {
    "L": {
-    "tag": "Law",
-    "name": "Magna Carta is sealed",
-    "year": 1215
+    "tag": "Exploration",
+    "name": "Marco Polo reaches China",
+    "year": 1275,
+    "approx": true
    },
    "M": {
     "tag": "Art",
@@ -1256,13 +1255,68 @@ window.CLOSER_DAYS = [
     "name": "Today",
     "year": "now"
    },
-   "fact": "Michelangelo finished painting the Sistine Chapel ceiling in 1512, closer to Magna Carta than to today."
+   "fact": "Michelangelo finished painting the Sistine Chapel ceiling in 1512, closer in time to Marco Polo's travels than to today."
   },
   {
    "L": {
-    "tag": "England",
-    "name": "The Battle of Hastings",
-    "year": 1066
+    "tag": "Ancient Egypt",
+    "name": "The Rosetta Stone is found",
+    "year": 1799
+   },
+   "M": {
+    "tag": "Food & drink",
+    "name": "The first chocolate bar",
+    "year": 1847
+   },
+   "R": {
+    "tag": "Literature",
+    "name": "Dracula is published",
+    "year": 1897
+   },
+   "fact": "Fry's of Bristol made the first moulded chocolate bar in 1847. Before that, chocolate was mostly a drink."
+  },
+  {
+   "L": {
+    "tag": "Invention",
+    "name": "The first bicycle",
+    "year": 1817
+   },
+   "M": {
+    "tag": "London",
+    "name": "The London Underground opens",
+    "year": 1863
+   },
+   "R": {
+    "tag": "Exploration",
+    "name": "Amundsen reaches the South Pole",
+    "year": 1911
+   },
+   "fact": "The world's first underground railway opened in London in 1863, with steam trains running through the tunnels."
+  },
+  {
+   "L": {
+    "tag": "Architecture",
+    "name": "Hagia Sophia is completed",
+    "year": 537
+   },
+   "M": {
+    "tag": "Architecture",
+    "name": "Angkor Wat is built",
+    "year": 1150,
+    "approx": true
+   },
+   "R": {
+    "tag": "The present",
+    "name": "Today",
+    "year": "now"
+   },
+   "fact": "Angkor Wat, built in the 1100s, is closer in time to Constantinople's Hagia Sophia, finished in 537, than to today."
+  },
+  {
+   "L": {
+    "tag": "Art",
+    "name": "Leonardo da Vinci is born",
+    "year": 1452
    },
    "M": {
     "tag": "Music",
@@ -1274,71 +1328,15 @@ window.CLOSER_DAYS = [
     "name": "Today",
     "year": "now"
    },
-   "fact": "Mozart was born in 1756, nearly 700 years after the Battle of Hastings."
-  },
-  {
-   "L": {
-    "tag": "America",
-    "name": "The Declaration of Independence",
-    "year": 1776
-   },
-   "M": {
-    "tag": "Food & drink",
-    "name": "The first chocolate bar",
-    "year": 1847
-   },
-   "R": {
-    "tag": "Space",
-    "name": "The Moon landing",
-    "year": 1969
-   },
-   "fact": "Fry's of Bristol made the first moulded chocolate bar in 1847. Before that, chocolate was mostly a drink."
-  },
-  {
-   "L": {
-    "tag": "War",
-    "name": "The Battle of Waterloo",
-    "year": 1815
-   },
-   "M": {
-    "tag": "London",
-    "name": "The London Underground opens",
-    "year": 1863
-   },
-   "R": {
-    "tag": "Space",
-    "name": "The Moon landing",
-    "year": 1969
-   },
-   "fact": "The world's first underground railway opened in London in 1863, with steam trains running through the tunnels."
-  },
-  {
-   "L": {
-    "tag": "Vikings",
-    "name": "Vikings reach North America",
-    "year": 1000,
-    "approx": true
-   },
-   "M": {
-    "tag": "Architecture",
-    "name": "The Taj Mahal is completed",
-    "year": 1653,
-    "approx": true
-   },
-   "R": {
-    "tag": "The present",
-    "name": "Today",
-    "year": "now"
-   },
-   "fact": "The Taj Mahal, finished around 1653, is closer to today than to the Vikings' arrival in North America around the year 1000."
+   "fact": "Mozart was born in 1756, slightly closer to today than to the birth of Leonardo da Vinci."
   }
  ],
  [
   {
    "L": {
-    "tag": "Literature",
-    "name": "Shakespeare dies",
-    "year": 1616
+    "tag": "Flight",
+    "name": "People fly in a hot-air balloon",
+    "year": 1783
    },
    "M": {
     "tag": "Japan",
@@ -1346,17 +1344,17 @@ window.CLOSER_DAYS = [
     "year": 1877
    },
    "R": {
-    "tag": "Space",
-    "name": "The Moon landing",
-    "year": 1969
+    "tag": "Science",
+    "name": "The first heart transplant",
+    "year": 1967
    },
-   "fact": "Samurai were still fighting in 1877, closer in time to the Moon landing than to Shakespeare."
+   "fact": "Samurai were still fighting in 1877, slightly closer in time to the first heart transplant than to the first people flying in a hot-air balloon."
   },
   {
    "L": {
-    "tag": "America",
-    "name": "The Declaration of Independence",
-    "year": 1776
+    "tag": "Paris",
+    "name": "The French Revolution begins",
+    "year": 1789
    },
    "M": {
     "tag": "Democracy",
@@ -1372,9 +1370,9 @@ window.CLOSER_DAYS = [
   },
   {
    "L": {
-    "tag": "Disaster",
-    "name": "The Titanic sinks",
-    "year": 1912
+    "tag": "Art",
+    "name": "Picasso paints Guernica",
+    "year": 1937
    },
    "M": {
     "tag": "Invention",
@@ -1382,17 +1380,17 @@ window.CLOSER_DAYS = [
     "year": 1957
    },
    "R": {
-    "tag": "Space",
-    "name": "The Moon landing",
-    "year": 1969
+    "tag": "Flight",
+    "name": "Concorde's first passenger flight",
+    "year": 1976
    },
    "fact": "Bubble wrap was invented in 1957 by Alfred Fielding and Marc Chavannes, who were trying to make textured wallpaper. It didn't catch on as wallpaper."
   },
   {
    "L": {
-    "tag": "Space",
-    "name": "The Moon landing",
-    "year": 1969
+    "tag": "Sport",
+    "name": "The first Paralympic Games",
+    "year": 1960
    },
    "M": {
     "tag": "Technology",
@@ -1404,13 +1402,13 @@ window.CLOSER_DAYS = [
     "name": "Today",
     "year": "now"
    },
-   "fact": "The first text message, 'Merry Christmas', was sent in December 1992, 23 years after the Moon landing."
+   "fact": "The first text message, 'Merry Christmas', was sent in December 1992, 32 years after the first Paralympic Games in Rome."
   },
   {
    "L": {
-    "tag": "Space",
-    "name": "The Moon landing",
-    "year": 1969
+    "tag": "Music",
+    "name": "Michael Jackson's Thriller",
+    "year": 1982
    },
    "M": {
     "tag": "Technology",
@@ -1422,7 +1420,7 @@ window.CLOSER_DAYS = [
     "name": "Today",
     "year": "now"
    },
-   "fact": "Wikipedia launched in January 2001, 32 years after the Moon landing."
+   "fact": "Wikipedia launched in January 2001, 19 years after Michael Jackson's Thriller came out."
   }
  ]
 ];
