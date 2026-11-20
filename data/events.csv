@@ -1,0 +1,157 @@
+id,event,year,approx,category,reach,check,used_in_puzzles,source
+sharks,The first sharks,-420000000,yes,Prehistory,global,verified,yes,https://www.elasmo-research.org/education/evolution/earliest.htm
+trees,The first trees,-385000000,yes,Prehistory,global,documented,yes,https://en.wikipedia.org/wiki/Wattieza
+firstdinos,The first dinosaurs,-230000000,yes,Prehistory,global,documented,yes,https://en.wikipedia.org/wiki/Dinosaur
+stego,Stegosaurus roams,-150000000,yes,Prehistory,global,documented,yes,https://en.wikipedia.org/wiki/Stegosaurus
+flowers,The first flowering plants,-130000000,yes,Prehistory,global,documented,yes,https://en.wikipedia.org/wiki/Flowering_plant
+trex,T. rex roams,-67000000,yes,Prehistory,global,documented,yes,https://en.wikipedia.org/wiki/Tyrannosaurus
+asteroid,The asteroid ends the dinosaurs,-66000000,yes,Prehistory,global,documented,yes,https://en.wikipedia.org/wiki/Cretaceous%E2%80%93Paleogene_extinction_event
+apes,The first apes,-25000000,yes,Prehistory,global,documented,yes,https://en.wikipedia.org/wiki/Ape
+sapiens,Homo sapiens appear,-298000,yes,Prehistory,global,documented,yes,https://en.wikipedia.org/wiki/Homo_sapiens
+neander,The Neanderthals die out,-38000,yes,Prehistory,global,documented,yes,https://en.wikipedia.org/wiki/Neanderthal
+lascaux,The Lascaux cave paintings,-15000,yes,Prehistory,global,documented,yes,https://en.wikipedia.org/wiki/Lascaux
+iceage,The last Ice Age ends,-9700,yes,Prehistory,global,documented,yes,https://en.wikipedia.org/wiki/Holocene
+mammoths,The last woolly mammoths,-2000,yes,Prehistory,global,verified,yes,https://www.nationalgeographic.com/science/article/woolly-mammoth-last-extinction-genetics
+writing,Writing is invented,-3200,yes,Invention,global,documented,yes,https://en.wikipedia.org/wiki/History_of_writing
+pyramid,The Great Pyramid is built,-2560,yes,Ancient Egypt,global,documented,yes,https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza
+stonehenge,Stonehenge's great stones are raised,-2500,yes,Prehistory,global,documented,yes,https://en.wikipedia.org/wiki/Stonehenge
+tut,Tutankhamun dies,-1323,yes,Ancient Egypt,global,documented,yes,https://en.wikipedia.org/wiki/Tutankhamun
+olympia,The first Olympic Games,-776,,Ancient Greece,global,documented,yes,https://en.wikipedia.org/wiki/Ancient_Olympic_Games
+rome,Rome is founded (by legend),-753,,Rome,global,documented,yes,https://en.wikipedia.org/wiki/Founding_of_Rome
+iliad,Homer's Iliad is written down,-750,yes,Literature,global,documented,yes,https://en.wikipedia.org/wiki/Iliad
+qin,China's First Emperor unites China,-221,,China,global,documented,yes,https://en.wikipedia.org/wiki/Qin_Shi_Huang
+caesar,Julius Caesar is assassinated,-44,,Rome,global,documented,yes,https://en.wikipedia.org/wiki/Assassination_of_Julius_Caesar
+cleopatra,Cleopatra dies,-30,,Ancient Egypt,global,documented,yes,https://en.wikipedia.org/wiki/Cleopatra
+vending,The first vending machine,50,yes,Invention,global,documented,yes,https://en.wikipedia.org/wiki/Vending_machine
+pompeii,Vesuvius buries Pompeii,79,,Rome,global,documented,yes,https://en.wikipedia.org/wiki/Pompeii
+hadrian,Hadrian's Wall is begun,122,,Rome,well-known,documented,yes,https://en.wikipedia.org/wiki/Hadrian%27s_Wall
+romefall,The Western Roman Empire falls,476,,Rome,global,documented,yes,https://en.wikipedia.org/wiki/Fall_of_the_Western_Roman_Empire
+vinland,Vikings reach North America,1000,yes,Vikings,global,documented,yes,https://en.wikipedia.org/wiki/Vinland
+hastings,The Battle of Hastings,1066,,England,well-known,documented,yes,https://en.wikipedia.org/wiki/Battle_of_Hastings
+oxford,Teaching begins at Oxford,1096,,Education,global,documented,yes,https://en.wikipedia.org/wiki/University_of_Oxford
+cambridge,Cambridge University is founded,1209,,Education,global,documented,yes,https://en.wikipedia.org/wiki/University_of_Cambridge
+magna,Magna Carta is sealed,1215,,Law,global,documented,yes,https://en.wikipedia.org/wiki/Magna_Carta
+aztecs,The Aztecs found Tenochtitlan,1325,,The Americas,global,documented,yes,https://en.wikipedia.org/wiki/Tenochtitlan
+machu,Machu Picchu is built,1450,yes,The Americas,global,documented,yes,https://en.wikipedia.org/wiki/Machu_Picchu
+constant,Constantinople falls,1453,,Empires,global,documented,yes,https://en.wikipedia.org/wiki/Fall_of_Constantinople
+gutenberg,The Gutenberg Bible is printed,1455,yes,Invention,global,verified,yes,https://en.wikipedia.org/wiki/Gutenberg_Bible
+columbus,Columbus reaches the Americas,1492,,Exploration,global,documented,yes,https://en.wikipedia.org/wiki/Voyages_of_Christopher_Columbus
+ming,Most of today's Great Wall is built,1500,yes,China,global,documented,yes,https://en.wikipedia.org/wiki/Great_Wall_of_China
+monalisa,Leonardo begins the Mona Lisa,1503,yes,Art,global,documented,yes,https://en.wikipedia.org/wiki/Mona_Lisa
+sistine,The Sistine Chapel ceiling is finished,1512,,Art,global,documented,yes,https://en.wikipedia.org/wiki/Sistine_Chapel_ceiling
+armada,The Spanish Armada,1588,,War,global,documented,yes,https://en.wikipedia.org/wiki/Spanish_Armada
+quixote,Don Quixote is published,1605,,Literature,global,documented,yes,https://en.wikipedia.org/wiki/Don_Quixote
+galileo,Galileo's telescope,1609,,Science,global,documented,yes,https://en.wikipedia.org/wiki/Galileo_Galilei
+shakes,Shakespeare dies,1616,,Literature,global,documented,yes,https://en.wikipedia.org/wiki/William_Shakespeare
+mayflower,The Mayflower lands,1620,,Exploration,global,documented,yes,https://en.wikipedia.org/wiki/Mayflower
+harvard,Harvard is founded,1636,,Education,global,documented,yes,https://en.wikipedia.org/wiki/Harvard_University
+taj,The Taj Mahal is completed,1653,yes,Architecture,global,verified,yes,https://en.wikipedia.org/wiki/Taj_Mahal
+dodo,The last confirmed dodo sighting,1662,,Nature,global,documented,yes,https://en.wikipedia.org/wiki/Dodo
+fire,The Great Fire of London,1666,,London,well-known,documented,,https://en.wikipedia.org/wiki/Great_Fire_of_London
+principia,Newton's Principia is published,1687,,Science,global,documented,yes,https://en.wikipedia.org/wiki/Philosophi%C3%A6_Naturalis_Principia_Mathematica
+mozart,Mozart is born,1756,,Music,global,documented,yes,https://en.wikipedia.org/wiki/Wolfgang_Amadeus_Mozart
+decl,The Declaration of Independence,1776,,America,global,documented,yes,https://en.wikipedia.org/wiki/United_States_Declaration_of_Independence
+locomotive,The first steam locomotive,1804,,Invention,global,documented,,https://en.wikipedia.org/wiki/Richard_Trevithick
+tincan,The tin can is patented,1810,,Invention,global,documented,yes,https://en.wikipedia.org/wiki/Tin_can
+waterloo,The Battle of Waterloo,1815,,War,global,documented,yes,https://en.wikipedia.org/wiki/Battle_of_Waterloo
+bicycle,The first bicycle,1817,,Invention,global,documented,,https://en.wikipedia.org/wiki/Dandy_horse
+antarctica,Antarctica is first sighted,1820,,Exploration,global,documented,yes,https://en.wikipedia.org/wiki/History_of_Antarctica
+lighter,The first lighter,1823,,Invention,global,documented,yes,https://en.wikipedia.org/wiki/D%C3%B6bereiner%27s_lamp
+ninth,Beethoven's Ninth Symphony premieres,1824,,Music,global,documented,yes,https://en.wikipedia.org/wiki/Symphony_No._9_(Beethoven)
+match,The friction match,1826,,Invention,global,documented,yes,https://en.wikipedia.org/wiki/Match
+photo,The first photograph,1826,yes,Invention,global,documented,yes,https://en.wikipedia.org/wiki/View_from_the_Window_at_Le_Gras
+victoria,Queen Victoria is crowned,1838,,Monarchy,global,documented,yes,https://en.wikipedia.org/wiki/Coronation_of_Queen_Victoria
+fax,The fax machine is patented,1843,,Invention,global,documented,yes,https://en.wikipedia.org/wiki/Alexander_Bain_(inventor)
+chocolate,The first chocolate bar,1847,,Food & drink,global,documented,yes,https://en.wikipedia.org/wiki/J._S._Fry_%26_Sons
+canopener,The can opener is invented,1858,,Invention,global,documented,yes,https://en.wikipedia.org/wiki/Can_opener
+bigben,Big Ben first chimes,1859,,London,global,documented,yes,https://en.wikipedia.org/wiki/Big_Ben
+darwin,Darwin's Origin of Species,1859,,Science,global,documented,yes,https://en.wikipedia.org/wiki/On_the_Origin_of_Species
+civilwar,The American Civil War begins,1861,,War,global,documented,yes,https://en.wikipedia.org/wiki/American_Civil_War
+football,Football's first official rules,1863,,Sport,global,documented,yes,https://en.wikipedia.org/wiki/History_of_association_football
+tube,The London Underground opens,1863,,London,global,documented,yes,https://en.wikipedia.org/wiki/London_Underground
+civilend,The American Civil War ends,1865,,War,global,documented,yes,https://en.wikipedia.org/wiki/American_Civil_War
+phone,The telephone is patented,1876,,Invention,global,documented,yes,https://en.wikipedia.org/wiki/Invention_of_the_telephone
+samurai,The last samurai uprising,1877,,Japan,global,documented,yes,https://en.wikipedia.org/wiki/Satsuma_Rebellion
+wimbledon,The first Wimbledon,1877,,Sport,global,documented,,https://en.wikipedia.org/wiki/1877_Wimbledon_Championship
+testcricket,The first Test cricket match,1877,,Sport,well-known,documented,,https://en.wikipedia.org/wiki/Test_cricket
+bulb,Edison's light bulb,1879,,Invention,global,documented,yes,https://en.wikipedia.org/wiki/Incandescent_light_bulb
+coke,Coca-Cola is invented,1886,,Food & drink,global,documented,yes,https://en.wikipedia.org/wiki/Coca-Cola
+liberty,The Statue of Liberty is unveiled,1886,,America,global,documented,yes,https://en.wikipedia.org/wiki/Statue_of_Liberty
+sherlock,Sherlock Holmes first appears,1887,,Literature,global,documented,yes,https://en.wikipedia.org/wiki/A_Study_in_Scarlet
+nintendo,Nintendo is founded,1889,,Games,global,documented,yes,https://en.wikipedia.org/wiki/Nintendo
+eiffel,The Eiffel Tower opens,1889,,Paris,global,documented,yes,https://en.wikipedia.org/wiki/Eiffel_Tower
+starry,Van Gogh paints The Starry Night,1889,,Art,global,documented,yes,https://en.wikipedia.org/wiki/The_Starry_Night
+basketball,Basketball is invented,1891,,Sport,global,documented,yes,https://en.wikipedia.org/wiki/Basketball
+nzvote,Women first vote in a national election,1893,,Democracy,global,documented,yes,https://en.wikipedia.org/wiki/Women%27s_suffrage_in_New_Zealand
+cinema,The first public film screening,1895,,Film,global,documented,,https://en.wikipedia.org/wiki/Workers_Leaving_the_Lumi%C3%A8re_Factory
+olympics,The first modern Olympics,1896,,Sport,global,documented,yes,https://en.wikipedia.org/wiki/1896_Summer_Olympics
+speeding,The first speeding ticket,1896,,Motoring,global,verified,yes,https://en.wikipedia.org/wiki/Arnold_(automobile)
+tour,The first Tour de France,1903,,Sport,global,documented,yes,https://en.wikipedia.org/wiki/1903_Tour_de_France
+wright,The Wright brothers fly,1903,,Flight,global,documented,yes,https://en.wikipedia.org/wiki/Wright_Flyer
+modelt,The Ford Model T,1908,,Motoring,global,documented,yes,https://en.wikipedia.org/wiki/Ford_Model_T
+titanic,The Titanic sinks,1912,,Disaster,global,documented,yes,https://en.wikipedia.org/wiki/Titanic
+ww1,The First World War begins,1914,,War,global,documented,yes,https://en.wikipedia.org/wiki/World_War_I
+ottoman,The Ottoman Empire ends,1922,,Empires,global,documented,yes,https://en.wikipedia.org/wiki/Ottoman_Empire
+tv,Television is first demonstrated,1926,,Invention,global,documented,yes,https://en.wikipedia.org/wiki/John_Logie_Baird
+jazzsinger,The first feature-length 'talkie',1927,,Film,global,documented,,https://en.wikipedia.org/wiki/The_Jazz_Singer
+penicillin,Penicillin is discovered,1928,,Science,global,documented,,https://en.wikipedia.org/wiki/History_of_penicillin
+mickey,Mickey Mouse first appears,1928,,Film,global,documented,yes,https://en.wikipedia.org/wiki/Steamboat_Willie
+bread,Sliced bread goes on sale,1928,,Food & drink,global,documented,,https://en.wikipedia.org/wiki/Sliced_bread
+oscars,The first Academy Awards,1929,,Film,global,documented,yes,https://en.wikipedia.org/wiki/1st_Academy_Awards
+pluto,Pluto is discovered,1930,,Space,global,documented,yes,https://en.wikipedia.org/wiki/Pluto
+worldcup,The first football World Cup,1930,,Sport,global,documented,yes,https://en.wikipedia.org/wiki/1930_FIFA_World_Cup
+owens,Jesse Owens wins four Olympic golds,1936,,Sport,global,documented,,https://en.wikipedia.org/wiki/Jesse_Owens
+snowwhite,"Snow White, the first animated feature film",1937,,Film,global,documented,,https://en.wikipedia.org/wiki/Snow_White_and_the_Seven_Dwarfs_(1937_film)
+hobbit,The Hobbit is published,1937,,Literature,global,documented,,https://en.wikipedia.org/wiki/The_Hobbit
+guernica,Picasso paints Guernica,1937,,Art,global,documented,,https://en.wikipedia.org/wiki/Guernica_(Picasso)
+ww2end,The Second World War ends,1945,,War,global,documented,yes,https://en.wikipedia.org/wiki/World_War_II
+f1,The first Formula One world championship,1950,,Sport,global,documented,,https://en.wikipedia.org/wiki/1950_Formula_One_season
+mile,The first four-minute mile,1954,,Sport,global,documented,yes,https://en.wikipedia.org/wiki/Four-minute_mile
+eurovision,The first Eurovision Song Contest,1956,,Music,global,documented,yes,https://en.wikipedia.org/wiki/Eurovision_Song_Contest_1956
+bubble,Bubble wrap is invented,1957,,Invention,global,verified,yes,https://en.wikipedia.org/wiki/Bubble_wrap
+paralympics,The first Paralympic Games,1960,,Sport,global,documented,,https://en.wikipedia.org/wiki/1960_Summer_Paralympics
+wallup,The Berlin Wall goes up,1961,,Cold War,global,documented,yes,https://en.wikipedia.org/wiki/Berlin_Wall
+beatles,The Beatles release their first album,1963,,Music,global,documented,yes,https://en.wikipedia.org/wiki/Please_Please_Me
+superbowl,The first Super Bowl,1967,,Sport,global,documented,yes,https://en.wikipedia.org/wiki/Super_Bowl_I
+moon,The Moon landing,1969,,Space,global,documented,yes,https://en.wikipedia.org/wiki/Apollo_11
+woodstock,Woodstock,1969,,Music,global,documented,,https://en.wikipedia.org/wiki/Woodstock
+email,The first email is sent,1971,,Technology,global,documented,yes,https://en.wikipedia.org/wiki/History_of_email
+mobile,The first mobile phone call,1973,,Technology,global,documented,yes,https://en.wikipedia.org/wiki/Martin_Cooper_(inventor)
+operahouse,The Sydney Opera House opens,1973,,Architecture,global,documented,,https://en.wikipedia.org/wiki/Sydney_Opera_House
+starwars,Star Wars is released,1977,,Film,global,documented,yes,https://en.wikipedia.org/wiki/Star_Wars_(film)
+pacman,Pac-Man is released,1980,,Games,global,documented,,https://en.wikipedia.org/wiki/Pac-Man
+mtv,MTV goes on air,1981,,Music,global,documented,,https://en.wikipedia.org/wiki/MTV
+tetris,Tetris is created,1984,,Games,global,documented,yes,https://en.wikipedia.org/wiki/Tetris
+mario,Super Mario Bros. is released,1985,,Games,global,documented,yes,https://en.wikipedia.org/wiki/Super_Mario_Bros.
+liveaid,Live Aid,1985,,Music,global,documented,yes,https://en.wikipedia.org/wiki/Live_Aid
+wallfalls,The Berlin Wall falls,1989,,Cold War,global,documented,yes,https://en.wikipedia.org/wiki/Berlin_Wall
+www,The World Wide Web is invented,1989,,Technology,global,documented,yes,https://en.wikipedia.org/wiki/World_Wide_Web
+sms,The first text message,1992,,Technology,global,documented,yes,https://en.wikipedia.org/wiki/SMS
+chunnel,The Channel Tunnel opens,1994,,Engineering,global,documented,yes,https://en.wikipedia.org/wiki/Channel_Tunnel
+dolly,Dolly the sheep is born,1996,,Science,global,documented,yes,https://en.wikipedia.org/wiki/Dolly_(sheep)
+gta,Grand Theft Auto is released,1997,,Games,global,documented,yes,https://en.wikipedia.org/wiki/Grand_Theft_Auto_(video_game)
+potter,The first Harry Potter book,1997,,Literature,global,documented,yes,https://en.wikipedia.org/wiki/Harry_Potter_and_the_Philosopher%27s_Stone
+google,Google is founded,1998,,Technology,global,documented,yes,https://en.wikipedia.org/wiki/Google
+wikipedia,Wikipedia launches,2001,,Technology,global,documented,yes,https://en.wikipedia.org/wiki/Wikipedia
+euro,Euro notes and coins arrive,2002,,Europe,global,documented,,https://en.wikipedia.org/wiki/Euro_banknotes
+youtube,YouTube launches,2005,,Technology,global,documented,yes,https://en.wikipedia.org/wiki/YouTube
+plutodemote,Pluto loses planet status,2006,,Space,global,documented,yes,https://en.wikipedia.org/wiki/Pluto
+iphone,The first iPhone,2007,,Technology,global,documented,yes,https://en.wikipedia.org/wiki/IPhone_(1st_generation)
+bolt,Usain Bolt runs 100m in 9.58 seconds,2009,,Sport,global,documented,yes,https://en.wikipedia.org/wiki/Usain_Bolt
+kenneth,Kenneth MacAlpin becomes king,843,yes,Scotland,regional,documented,,https://en.wikipedia.org/wiki/Kenneth_MacAlpin
+lindisfarne,Vikings raid Lindisfarne,793,,Vikings,regional,documented,,https://en.wikipedia.org/wiki/Lindisfarne
+arbroath,The Declaration of Arbroath,1320,,Scotland,regional,documented,,https://en.wikipedia.org/wiki/Declaration_of_Arbroath
+standrews,St Andrews University is founded,1413,,Scotland,regional,documented,,https://en.wikipedia.org/wiki/University_of_St_Andrews
+glasgow,Glasgow University is founded,1451,,Scotland,regional,documented,,https://en.wikipedia.org/wiki/University_of_Glasgow
+whisky,Scotch whisky is first recorded,1494,,Scotland,regional,documented,,https://en.wikipedia.org/wiki/Scotch_whisky
+aberdeen,Aberdeen University is founded,1495,,Scotland,regional,documented,,https://en.wikipedia.org/wiki/University_of_Aberdeen
+edinuni,Edinburgh University is founded,1583,,Scotland,regional,documented,,https://en.wikipedia.org/wiki/University_of_Edinburgh
+crowns,The Union of the Crowns,1603,,Scotland,regional,documented,,https://en.wikipedia.org/wiki/Union_of_the_Crowns
+union,The Acts of Union,1707,,Scotland,regional,documented,,https://en.wikipedia.org/wiki/Acts_of_Union_1707
+dettingen,The last British king leads troops in battle,1743,,Monarchy,regional,documented,,https://en.wikipedia.org/wiki/Battle_of_Dettingen
+newtown,Edinburgh's New Town is begun,1767,,Scotland,regional,documented,,"https://en.wikipedia.org/wiki/New_Town,_Edinburgh"
+discovery,RRS Discovery is launched,1901,,Dundee,regional,documented,,https://en.wikipedia.org/wiki/RRS_Discovery
+beano,The Beano is first published,1938,,Dundee,regional,documented,,https://en.wikipedia.org/wiki/The_Beano
+nhs,The NHS is founded,1948,,Britain,regional,documented,,https://en.wikipedia.org/wiki/National_Health_Service
+abertay,Abertay becomes a university,1994,,Dundee,regional,documented,,https://en.wikipedia.org/wiki/Abertay_University
+scotparl,The Scottish Parliament reopens,1999,,Scotland,regional,documented,,https://en.wikipedia.org/wiki/Scottish_Parliament
