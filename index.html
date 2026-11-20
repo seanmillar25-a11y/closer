@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Closer — the daily history game</title>
+<meta name="description" content="Five moments in history. Ten seconds each. Is this moment closer to the one on the left, or the right?">
+<meta name="theme-color" content="#0c0b09">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0b09; --ink:#f2ead9; --soft:#cfc5b0; --muted:#8a8272;
+    --gold:#c9a86a; --gold2:#e6cf9a; --hair:rgba(201,168,106,.28); --hair2:rgba(242,234,217,.08);
+    --good:#9cc4a4; --bad:#d98a76;
+    --serif:"Instrument Serif",Georgia,serif; --sans:Inter,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg)}
+  body{color:var(--ink);font-family:var(--sans);min-height:100vh;display:flex;justify-content:center;
+       -webkit-font-smoothing:antialiased;
+       background:
+         radial-gradient(120% 60% at 50% -10%, rgba(201,168,106,.13), transparent 60%),
+         radial-gradient(80% 50% at 50% 110%, rgba(201,168,106,.06), transparent 60%), var(--bg)}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.07;mix-blend-mode:overlay;
+       background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .app{position:relative;width:100%;max-width:440px;padding:28px 22px 48px}
+  .caps{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:500}
+
+  /* header */
+  header{text-align:center}
+  .mark{display:inline-flex;align-items:center;gap:10px}
+  .mark svg{width:18px;height:26px}
+  h1{font-family:var(--serif);font-style:italic;font-weight:400;font-size:46px;line-height:1;letter-spacing:-.5px}
+  .tagline{color:var(--muted);margin-top:8px}
+  .rule{display:flex;align-items:center;gap:12px;margin:18px 0 0;color:var(--gold)}
+  .rule::before,.rule::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--hair),transparent)}
+  .rule span{color:var(--soft)}
+
+  /* archive */
+  .archive{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:16px 0 26px}
+  .archive button{width:32px;height:32px;border-radius:50%;border:1px solid var(--hair2);background:transparent;
+       color:var(--muted);font:500 12px var(--sans);cursor:pointer;position:relative;transition:all .2s}
+  .archive button.on{border-color:var(--gold);color:var(--gold2);background:rgba(201,168,106,.08)}
+  .archive button.done::after{content:"";position:absolute;bottom:-5px;left:50%;width:4px;height:4px;margin-left:-2px;border-radius:50%;background:var(--gold)}
+  .archive button.today{box-shadow:0 0 0 3px rgba(201,168,106,.12)}
+
+  /* progress */
+  .progress{display:flex;justify-content:center;gap:14px;margin-bottom:18px}
+  .progress i{width:8px;height:8px;transform:rotate(45deg);border:1px solid var(--muted);transition:all .3s}
+  .progress i.c{border-color:var(--gold2);box-shadow:0 0 10px rgba(201,168,106,.5)}
+  .progress i.g{background:var(--good);border-color:var(--good)}
+  .progress i.b{background:var(--bad);border-color:var(--bad)}
+
+  .progress i.t{background:var(--muted);border-color:var(--muted)}
+  .timer{display:flex;align-items:center;gap:12px;margin:0 0 20px}
+  .timer .track{flex:1;height:10px;background:rgba(229,83,75,.14);border:1px solid rgba(229,83,75,.35);border-radius:999px;overflow:hidden}
+  .timer .tbar{height:100%;width:100%;background:linear-gradient(90deg,#b8322b,#e5534b);transform-origin:left;border-radius:999px;
+       box-shadow:0 0 14px rgba(229,83,75,.55)}
+  .timer .tnum{font-family:var(--serif);font-size:30px;line-height:1;min-width:34px;text-align:right;color:#ef6a61;font-variant-numeric:tabular-nums}
+  .timer.low .track{animation:pulse .45s ease infinite alternate}
+  .timer.low .tnum{animation:pulse .45s ease infinite alternate}
+  @keyframes pulse{to{opacity:.4}}
+  .ready{text-align:center;padding:34px 22px 30px;border:1px solid var(--hair);border-radius:4px;position:relative;
+       background:linear-gradient(180deg,rgba(242,234,217,.04),rgba(242,234,217,.01))}
+  .ready::before{content:"";position:absolute;inset:5px;border:1px solid var(--hair2);border-radius:2px;pointer-events:none}
+  .ready .big{font-family:var(--serif);font-size:40px;line-height:1.05;margin-top:12px}
+  .ready .big em{color:var(--gold2)}
+  .ready .rules{display:flex;justify-content:center;gap:22px;margin:22px 0 4px;color:var(--muted)}
+  .ready .rules b{display:block;font-family:var(--serif);font-weight:400;font-size:30px;color:var(--ink);text-transform:none;letter-spacing:0}
+  .ready .rules b.red{color:#ef6a61}
+  .ready .btn{margin-top:24px}
+  .verdict.t{color:var(--muted)}
+  .squares i.t{background:var(--muted);opacity:.6}
+  .review li i.t{background:var(--muted)}
+  .prompt{text-align:center;color:var(--muted);margin-bottom:12px}
+  .ico{display:block;fill:none;stroke:currentColor;stroke-width:1.15;stroke-linecap:round;stroke-linejoin:round}
+  .placard .ico{width:70px;height:70px;margin:0 auto 14px;color:var(--gold);filter:drop-shadow(0 0 10px rgba(201,168,106,.25))}
+  .choice .ico{width:34px;height:34px;margin-top:12px;color:var(--soft);opacity:.9}
+  #cR .ico{margin-left:auto}
+  .placard .ico.pop{animation:pop .6s cubic-bezier(.2,.8,.2,1)}
+  @keyframes pop{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:none}}
+  .mute{position:absolute;top:22px;right:18px;width:36px;height:36px;border-radius:50%;border:1px solid var(--hair2);
+       background:transparent;color:var(--muted);cursor:pointer;display:grid;place-items:center}
+  .mute svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+  .mute.on{color:var(--gold2);border-color:var(--hair)}
+
+  /* placard */
+  .placard{position:relative;text-align:center;padding:30px 22px 26px;border:1px solid var(--hair);
+       background:linear-gradient(180deg,rgba(242,234,217,.04),rgba(242,234,217,.01));border-radius:4px}
+  .placard::before{content:"";position:absolute;inset:5px;border:1px solid var(--hair2);border-radius:2px;pointer-events:none}
+  .placard .tag{color:var(--gold)}
+  .placard .name{font-family:var(--serif);font-size:36px;line-height:1.08;margin-top:12px;letter-spacing:-.2px}
+  .placard .when{font-family:var(--serif);font-style:italic;font-size:20px;color:var(--gold2);margin-top:10px;
+       min-height:26px;opacity:0;transition:opacity .5s}
+  .placard .when.show{opacity:1}
+  .orn{color:var(--gold);opacity:.7;margin-top:12px;font-size:12px;letter-spacing:.5em}
+
+  /* choices */
+  .choices{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+  .choice{position:relative;background:rgba(242,234,217,.025);border:1px solid var(--hair2);color:var(--ink);
+       border-radius:4px;padding:16px 14px 15px;text-align:left;cursor:pointer;font:inherit;
+       transition:border-color .25s,background .25s,transform .12s}
+  .choice:hover:not(:disabled){border-color:var(--hair)}
+  .choice:active:not(:disabled){transform:scale(.98)}
+  .choice:disabled{cursor:default}
+  .choice .dir{color:var(--muted);display:flex;justify-content:space-between}
+  #cR .dir{flex-direction:row-reverse}
+  .choice .tag{color:var(--muted);margin-top:12px;font-size:9.5px}
+  #cR{text-align:right}
+  .choice .name{font-family:var(--serif);font-size:21px;line-height:1.12;margin-top:5px}
+  .choice .when{font-family:var(--serif);font-style:italic;color:var(--soft);font-size:15px;margin-top:6px;min-height:19px;opacity:0;transition:opacity .5s}
+  .choice .when.show{opacity:1}
+  .choice.right{border-color:var(--good);background:rgba(156,196,164,.07)}
+  .choice.right .dir{color:var(--good)}
+  .choice.wrong{border-color:var(--bad);background:rgba(217,138,118,.06)}
+  .choice.wrong .dir{color:var(--bad)}
+
+  /* reveal */
+  .reveal{margin-top:22px;display:none}
+  .reveal.show{display:block;animation:rise .5s cubic-bezier(.2,.8,.2,1)}
+  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .verdict{text-align:center;font-family:var(--serif);font-style:italic;font-size:30px}
+  .verdict.g{color:var(--good)} .verdict.b{color:var(--bad)}
+  .timeline{position:relative;height:70px;margin:18px 10px 4px}
+  .timeline .line{position:absolute;left:0;right:0;top:12px;height:1px;background:var(--hair)}
+  .timeline .seg{position:absolute;top:11.5px;height:2px;background:var(--good);transform-origin:left;animation:grow .9s .15s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  .tick{position:absolute;top:6px;width:13px;height:13px;margin-left:-6.5px;border-radius:50%;border:1px solid var(--soft);background:var(--bg)}
+  .tick.mid{border-color:var(--gold2);background:var(--gold);box-shadow:0 0 12px rgba(201,168,106,.6);
+       transition:left 1s cubic-bezier(.2,.8,.2,1)}
+  .gap{position:absolute;top:30px;transform:translateX(-50%);text-align:center;white-space:nowrap}
+  .gap b{display:block;font-family:var(--serif);font-weight:400;font-size:19px;color:var(--ink)}
+  .gap span{color:var(--muted);font-size:9px}
+  .gap.win b{color:var(--good)}
+  .fact{margin-top:14px;padding:16px 18px;border-left:1px solid var(--gold);color:var(--soft);font-size:15px;line-height:1.6;
+       background:linear-gradient(90deg,rgba(201,168,106,.06),transparent)}
+  .btn{display:block;width:100%;margin-top:20px;padding:16px;border:0;border-radius:999px;cursor:pointer;
+       background:linear-gradient(180deg,var(--gold2),var(--gold));color:#1a160e;
+       font:600 11.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;
+       box-shadow:0 8px 30px -10px rgba(201,168,106,.55), inset 0 1px 0 rgba(255,255,255,.35)}
+  .btn:active{transform:translateY(1px)}
+  .btn.ghost{background:transparent;color:var(--gold2);border:1px solid var(--hair);box-shadow:none}
+
+  /* end */
+  .end{display:none;text-align:center;padding-top:6px}
+  .end.show{display:block;animation:rise .6s cubic-bezier(.2,.8,.2,1)}
+  .end .label{color:var(--gold)}
+  .score{font-family:var(--serif);font-size:96px;line-height:1;margin-top:10px;letter-spacing:-2px}
+  .score em{font-style:italic;color:var(--muted);font-size:52px}
+  .squares{display:flex;justify-content:center;gap:8px;margin:18px 0 14px}
+  .squares i{width:26px;height:26px;border-radius:3px}
+  .squares i.g{background:var(--good)} .squares i.b{background:var(--bad);opacity:.85}
+  .endmsg{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--soft)}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);margin:26px 0 4px;border-top:1px solid var(--hair2);border-bottom:1px solid var(--hair2)}
+  .stats div{padding:14px 0;color:var(--muted)}
+  .stats div+div{border-left:1px solid var(--hair2)}
+  .stats b{display:block;font-family:var(--serif);font-weight:400;font-size:32px;color:var(--ink);letter-spacing:0;text-transform:none;margin-bottom:2px}
+  .sharebox{display:none;margin-top:12px;padding:14px;border:1px dashed var(--hair);border-radius:4px;
+       font:13px/1.6 ui-monospace,monospace;white-space:pre-wrap;color:var(--soft);user-select:all}
+  .review{margin-top:28px;text-align:left}
+  .review h3{color:var(--gold);text-align:center;margin-bottom:10px}
+  .review li{list-style:none;display:flex;gap:12px;align-items:baseline;padding:11px 0;border-top:1px solid var(--hair2);font-size:14px;color:var(--soft)}
+  .review li i{flex:none;width:7px;height:7px;transform:rotate(45deg) translateY(-1px)}
+  .review li i.g{background:var(--good)} .review li i.b{background:var(--bad)}
+  .review li b{font-family:var(--serif);font-weight:400;font-size:17px;color:var(--ink)}
+
+  .how{margin-top:34px;padding-top:20px;border-top:1px solid var(--hair2);color:var(--muted);font-size:13px;line-height:1.65;text-align:center}
+  .how .caps{color:var(--gold);display:block;margin-bottom:8px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <pattern id="hatch" width="2.6" height="2.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="2.6" stroke="#c9a86a" stroke-width=".7"/></pattern>
+</defs></svg>
+<div class="app">
+  <button class="mute" id="mute" aria-label="Sound"></button>
+  <header>
+    <div class="mark">
+      <svg viewBox="0 0 18 26" fill="none" stroke="#c9a86a" stroke-width="1.2"><path d="M2 1h14M2 25h14M3 1c0 7 12 7 12 12S3 18 3 25M15 1c0 7-12 7-12 12s12 5 12 12"/><path d="M6.5 22.5h5L9 19.5z" fill="#c9a86a" stroke="none"/></svg>
+      <h1>Closer</h1>
+    </div>
+    <div class="tagline caps">A daily game of time</div>
+    <div class="rule caps"><span id="meta"></span></div>
+  </header>
+
+  <nav class="archive" id="archive" aria-label="Puzzle archive"></nav>
+
+  <section class="ready" id="ready">
+    <div class="caps" style="color:var(--gold)" id="readyNo"></div>
+    <div class="big">Five moments.<br><em>Ten seconds</em> each.</div>
+    <div class="rules">
+      <div class="caps"><b>5</b>Rounds</div>
+      <div class="caps"><b class="red">10s</b>Per round</div>
+      <div class="caps"><b>1</b>Try</div>
+    </div>
+    <button class="btn" id="startBtn">I'm ready · Start</button>
+  </section>
+
+  <main id="game">
+    <div class="progress" id="progress"></div>
+    <div class="timer" aria-live="off"><div class="track"><div class="tbar" id="tbar"></div></div><div class="tnum" id="tnum">10</div></div>
+    <div class="prompt caps">Is this moment closer to…</div>
+    <section class="placard">
+      <div id="mIcon"></div>
+      <div class="tag caps" id="mTag"></div>
+      <div class="name" id="mName"></div>
+      <div class="when" id="mWhen"></div>
+      <div class="orn">◆ ◆ ◆</div>
+    </section>
+    <div class="choices">
+      <button class="choice" id="cL"><div class="dir caps"><span>← Closer to</span></div><div class="ic"></div><div class="tag caps"></div><div class="name"></div><div class="when"></div></button>
+      <button class="choice" id="cR"><div class="dir caps"><span>Closer to →</span></div><div class="ic"></div><div class="tag caps"></div><div class="name"></div><div class="when"></div></button>
+    </div>
+    <section class="reveal" id="reveal">
+      <div class="verdict" id="verdict"></div>
+      <div class="timeline" id="timeline"></div>
+      <div class="fact" id="fact"></div>
+      <button class="btn" id="next">Next</button>
+    </section>
+  </main>
+
+  <section class="end" id="end">
+    <div class="label caps" id="endTitle"></div>
+    <div class="score" id="score"></div>
+    <div class="squares" id="squares"></div>
+    <div class="endmsg" id="endMsg"></div>
+    <div class="stats">
+      <div class="caps"><b id="sPlayed">0</b>Played</div>
+      <div class="caps"><b id="sStreak">0</b>Streak</div>
+      <div class="caps"><b id="sPerfect">0</b>Perfect</div>
+    </div>
+    <button class="btn" id="share">Share result</button>
+    <div class="sharebox" id="sharebox"></div>
+    <button class="btn ghost" id="replay">Play again</button>
+    <div class="review"><h3 class="caps">Today's moments</h3><ul id="reviewList"></ul></div>
+  </section>
+
+  <footer class="how">
+    <span class="caps">How to play</span>
+    Each round shows one moment in history. Decide whether it sits closer in time to the moment on the left or the one on the right. Five rounds a day, the same for everyone.<br><br>
+    <em>Prototype: fifteen puzzles are loaded. Tap a number to play any of them.</em>
+  </footer>
+</div>
+
+<script>
+// year: negative = BC; very large negatives = millions of years ago.
+const E = (tag, name, year, approx=false) => ({tag, name, year, approx});
+const TODAY = E("The present","Today",2026);
+const PYRAMID = E("Ancient Egypt","The Great Pyramid is built",-2560,true);
+const MOON = E("Space","The Moon landing",1969);
+const TREX = E("Prehistory","T. rex roams",-67000000,true);
+const OXFORD = E("Education","Teaching begins at Oxford",1096);
+
+const DAYS = [
+ [ // 1
+  {L:PYRAMID, M:E("Ancient Egypt","Cleopatra dies",-30), R:MOON,
+   fact:"Cleopatra lived about 2,500 years after the Great Pyramid was built, but only about 2,000 years before Apollo 11. To her, the pyramids were already ancient."},
+  {L:E("Prehistory","Stegosaurus roams",-150000000,true), M:TREX, R:TODAY,
+   fact:"About 80 million years separate Stegosaurus and T. rex. That's more time than separates T. rex from you."},
+  {L:E("Prehistory","The last Ice Age ends",-9700,true), M:E("Prehistory","The last woolly mammoths",-2000,true), R:E("Ancient Egypt","Cleopatra dies",-30),
+   fact:"A small population of woolly mammoths survived on Wrangel Island in the Arctic until roughly 4,000 years ago, closer to Cleopatra's time than to the Ice Age. They were still alive when the Great Pyramid was built."},
+  {L:OXFORD, M:E("The Americas","The Aztecs found Tenochtitlan",1325), R:E("Exploration","Columbus reaches the Americas",1492),
+   fact:"The Aztec capital, on the site of today's Mexico City, was founded only 167 years before Columbus arrived. Oxford was already 229 years old by then."},
+  {L:E("Invention","The fax machine is patented",1843), M:E("War","The American Civil War begins",1861), R:E("Technology","The first email is sent",1971),
+   fact:"Alexander Bain, a Scottish clockmaker, patented a way of sending images by wire in 1843. The fax is older than the telephone."}
+ ],
+ [ // 2
+  {L:E("Prehistory","The first sharks",-450000000,true), M:E("Prehistory","The first trees",-385000000,true), R:TREX,
+   fact:"Sharks have been around for about 450 million years, roughly 65 million years longer than trees."},
+  {L:E("Japan","The last samurai uprising",1877), M:E("Games","Nintendo is founded",1889), R:E("Games","Super Mario Bros. is released",1985),
+   fact:"Nintendo started out making hand-made playing cards, just 12 years after Japan's last samurai rebellion."},
+  {L:E("Law","Magna Carta is sealed",1215), M:E("Scotland","St Andrews University is founded",1413), R:E("Exploration","Columbus reaches the Americas",1492),
+   fact:"Scotland's oldest university was already 79 years old when Columbus crossed the Atlantic."},
+  {L:E("Disaster","The Titanic sinks",1912), M:E("Science","Penicillin is discovered",1928), R:MOON,
+   fact:"Alexander Fleming, another Scot, noticed mould killing bacteria in 1928, just 16 years after the Titanic."},
+  {L:E("Cold War","The Berlin Wall goes up",1961), M:E("Games","Tetris is created",1984), R:E("Cold War","The Berlin Wall falls",1989),
+   fact:"Tetris was created in Moscow in 1984, five years before the Berlin Wall fell."}
+ ],
+ [ // 3
+  {L:E("Rome","Hadrian's Wall is begun",122), M:E("The Americas","Machu Picchu is built",1450,true), R:TODAY,
+   fact:"Machu Picchu looks ancient, but the Inca built it around 1450. That's closer to today than to Roman Britain, and Oxford was already over 350 years old by then."},
+  {L:E("War","The First World War begins",1914), M:E("Space","Pluto is discovered",1930), R:E("Space","Pluto loses planet status",2006),
+   fact:"Pluto was officially a planet for 76 years, from its discovery in 1930 to its reclassification in 2006."},
+  {L:MOON, M:E("Dundee","Abertay becomes a university",1994), R:E("Technology","The first iPhone",2007),
+   fact:"Dundee Institute of Technology became the University of Abertay Dundee in 1994, 13 years before the first iPhone."},
+  {L:E("Dundee","RRS Discovery is launched",1901), M:E("Flight","The Wright brothers fly",1903), R:MOON,
+   fact:"Only 66 years separate the first powered flight from people walking on the Moon."},
+  {L:PYRAMID, M:E("Ancient Greece","The first Olympic Games",-776), R:TODAY,
+   fact:"The first recorded Olympics in 776 BC were closer in time to the Great Pyramid than to us. Ancient history covers a lot of time."}
+ ],
+ [ // 4
+  {L:E("Literature","Shakespeare dies",1616), M:E("Education","Harvard is founded",1636), R:E("Science","Newton's Principia is published",1687),
+   fact:"Harvard was founded just 20 years after Shakespeare died, and 51 years before Newton set out his laws of motion."},
+  {L:E("War","The Spanish Armada",1588), M:E("Nature","The last confirmed dodo sighting",1662), R:E("America","The Declaration of Independence",1776),
+   fact:"The dodo was gone more than a century before the United States existed."},
+  {L:E("War","The American Civil War ends",1865), M:E("Food & drink","Coca-Cola is invented",1886), R:E("Flight","The first powered flight",1903),
+   fact:"A close one: Coca-Cola came 21 years after the Civil War ended and 17 years before the Wright brothers flew."},
+  {L:E("War","The Battle of Waterloo",1815), M:E("London","Big Ben first chimes",1859), R:E("Invention","The telephone is patented",1876),
+   fact:"Big Ben first rang out in 1859, just 17 years before Edinburgh-born Alexander Graham Bell patented the telephone."},
+  {L:E("London","The Great Fire of London",1666), M:E("Scotland","Edinburgh's New Town is begun",1767), R:E("Monarchy","Queen Victoria is crowned",1838),
+   fact:"Building work on Edinburgh's Georgian New Town began in 1767, a century after the Great Fire of London."}
+ ],
+ [ // 5
+  {L:E("Ancient Egypt","Cleopatra dies",-30), M:OXFORD, R:TODAY,
+   fact:"Oxford University is closer in time to you than it is to Cleopatra."},
+  {L:E("Science","Darwin's Origin of Species",1859), M:E("Invention","Edison's light bulb",1879), R:E("Motoring","The Ford Model T",1908),
+   fact:"Edison's practical light bulb arrived 20 years after Darwin's big book and 29 years before the Model T."},
+  {L:E("Prehistory","The first dinosaurs",-230000000,true), M:TREX, R:TODAY,
+   fact:"Dinosaurs ruled for so long that T. rex is far closer to us than to the first dinosaurs."},
+  {L:E("Exploration","Columbus reaches the Americas",1492), M:E("Exploration","The Mayflower lands",1620), R:E("America","The Declaration of Independence",1776),
+   fact:"The Mayflower landed 128 years after Columbus and 156 years before US independence."},
+  {L:E("Scotland","The Union of the Crowns",1603), M:E("Scotland","The Acts of Union",1707), R:E("Scotland","The Scottish Parliament reopens",1999),
+   fact:"The Scottish Parliament didn't sit for 292 years between the 1707 Acts of Union and its reopening in 1999."}
+ ],
+ [ // 6
+  {L:E("Rome","The Romans invade Britain",43), M:E("Rome","Hadrian's Wall is begun",122), R:E("Rome","The Romans leave Britain",410,true),
+   fact:"Work on Hadrian's Wall began about 80 years after the invasion. Rome then held Britain for almost three more centuries."},
+  {L:E("Vikings","Vikings raid Lindisfarne",793), M:E("Scotland","Kenneth MacAlpin becomes king",843,true), R:E("England","The Battle of Hastings",1066),
+   fact:"Kenneth MacAlpin, traditionally the first King of Scots, came to power about 50 years after the first great Viking raid on Britain."},
+  {L:PYRAMID, M:E("Invention","The first vending machine",50,true), R:TODAY,
+   fact:"Hero of Alexandria designed a coin-operated holy water dispenser in the 1st century AD. The vending machine is closer to the pyramids than you might think, but still closer to you."},
+  {L:E("Food & drink","Sliced bread goes on sale",1928), M:E("Dundee","The Beano is first published",1938), R:MOON,
+   fact:"The Beano was first published in Dundee in 1938, a decade after sliced bread first went on sale."},
+  {L:E("Games","Tetris is created",1984), M:E("Dundee","Grand Theft Auto is made",1997), R:E("Technology","The first iPhone",2007),
+   fact:"The original Grand Theft Auto came out of DMA Design in Dundee in 1997, ten years before the iPhone."}
+ ],
+ [ // 7
+  {L:E("Invention","The first lighter",1823), M:E("Invention","The friction match",1826), R:E("Monarchy","Queen Victoria is crowned",1838),
+   fact:"Johann Döbereiner's lighter, the 'Döbereiner's lamp', came in 1823. That's three years before John Walker invented the friction match."},
+  {L:E("Invention","The tin can is patented",1810), M:E("Invention","The can opener is invented",1858), R:E("Invention","The telephone is patented",1876),
+   fact:"For almost 50 years people opened tin cans with hammers and chisels. The dedicated can opener didn't appear until 1858."},
+  {L:E("Disaster","The Titanic sinks",1912), M:E("Invention","Baird demonstrates television",1926), R:MOON,
+   fact:"John Logie Baird, from Helensburgh, gave the first public demonstration of television in 1926."},
+  {L:MOON, M:E("Science","Dolly the sheep is born",1996), R:TODAY,
+   fact:"A close call: Dolly, cloned at the Roslin Institute near Edinburgh, was born 27 years after the Moon landing and 30 years before today."},
+  {L:E("Invention","The first steam locomotive",1804), M:E("Invention","The first bicycle",1817), R:E("Monarchy","Queen Victoria is crowned",1838),
+   fact:"Richard Trevithick's steam locomotive ran in 1804, 13 years before Karl Drais's pedal-less 'running machine', the first bicycle."}
+ ],
+ [ // 8
+  {L:E("Prehistory","Stegosaurus roams",-150000000,true), M:E("Prehistory","The first flowering plants",-130000000,true), R:TREX,
+   fact:"Stegosaurus probably never saw a flower. Flowering plants appeared later, and T. rex lived among them."},
+  {L:E("Prehistory","Homo sapiens appear",-298000,true), M:E("Prehistory","The Neanderthals die out",-38000,true), R:TODAY,
+   fact:"Our species shared the planet with Neanderthals for well over 200,000 years before they disappeared, roughly 40,000 years ago."},
+  {L:E("Prehistory","The last Ice Age ends",-9700,true), M:PYRAMID, R:TODAY,
+   fact:"The Great Pyramid is closer in time to you than to the end of the last Ice Age."},
+  {L:E("Prehistory","The Lascaux cave paintings",-15000,true), M:E("Prehistory","The last woolly mammoths",-2000,true), R:TODAY,
+   fact:"The last mammoths are closer in time to your smartphone than to the cave paintings at Lascaux."},
+  {L:E("Prehistory","The asteroid ends the dinosaurs",-66000000,true), M:E("Prehistory","The first apes",-25000000,true), R:TODAY,
+   fact:"The first apes appeared around 25 million years ago. That's much closer to us than to the asteroid that ended the dinosaurs."}
+ ],
+ [ // 9
+  {L:OXFORD, M:E("Education","Cambridge is founded",1209), R:E("Scotland","St Andrews University is founded",1413),
+   fact:"Cambridge was founded in 1209, traditionally by scholars leaving Oxford."},
+  {L:E("Scotland","St Andrews University is founded",1413), M:E("Scotland","Glasgow University is founded",1451), R:E("Scotland","Aberdeen University is founded",1495),
+   fact:"A close one: Scotland had three universities by 1495, when England still had only two."},
+  {L:E("Scotland","Aberdeen University is founded",1495), M:E("Scotland","Edinburgh University is founded",1583), R:E("Education","Harvard is founded",1636),
+   fact:"Edinburgh was founded in 1583, making it Scotland's fourth ancient university."},
+  {L:E("Science","Galileo's telescope",1609), M:E("Science","Newton's Principia is published",1687), R:E("Science","Darwin's Origin of Species",1859),
+   fact:"Newton's laws came 78 years after Galileo first turned a telescope to the sky."},
+  {L:MOON, M:E("Technology","The World Wide Web is invented",1989), R:TODAY,
+   fact:"Tim Berners-Lee proposed the web in 1989, just 20 years after the Moon landing."}
+ ],
+ [ // 10
+  {L:E("War","The American Civil War ends",1865), M:E("America","The Statue of Liberty is unveiled",1886), R:E("War","The First World War begins",1914),
+   fact:"The Statue of Liberty was unveiled in New York in 1886, a gift from the people of France."},
+  {L:E("Paris","The Eiffel Tower opens",1889), M:E("Sport","The first modern Olympics",1896), R:E("Disaster","The Titanic sinks",1912),
+   fact:"The first modern Olympics were held in Athens in 1896, seven years after the Eiffel Tower opened."},
+  {L:E("Britain","The NHS is founded",1948), M:MOON, R:E("Engineering","The Channel Tunnel opens",1994),
+   fact:"The Moon landing came 21 years after the NHS was founded and 25 years before the Channel Tunnel opened."},
+  {L:E("Technology","The first email is sent",1971), M:E("Technology","Google is founded",1998), R:TODAY,
+   fact:"The closest call yet: Google was founded 27 years after the first email and 28 years before today."},
+  {L:E("Cold War","The Berlin Wall falls",1989), M:E("Europe","Euro notes and coins arrive",2002), R:TODAY,
+   fact:"Euro notes and coins went into people's pockets in 2002, only 13 years after the Berlin Wall fell."}
+ ],
+ [ // 11
+  {L:E("War","The Battle of Waterloo",1815), M:E("Empires","The Ottoman Empire ends",1922), R:TODAY,
+   fact:"A close one. The Ottoman Empire, founded around 1300, lasted until 1922, slightly closer to today than to Waterloo."},
+  {L:E("Rome","The Romans invade Britain",43), M:E("Empires","Constantinople falls",1453), R:TODAY,
+   fact:"The Roman Empire survived in the east until the fall of Constantinople in 1453. That end is closer to today than to the invasion of Britain."},
+  {L:E("China","China's First Emperor unites China",-221), M:E("China","Most of today's Great Wall is built",1500,true), R:TODAY,
+   fact:"Earlier walls are ancient, but most of the Great Wall you see today was built by the Ming dynasty, mainly in the 1400s to 1600s."},
+  {L:PYRAMID, M:E("Ancient Egypt","Tutankhamun dies",-1323,true), R:E("Ancient Egypt","Cleopatra dies",-30),
+   fact:"Very close: Tutankhamun is about 1,240 years after the Great Pyramid and about 1,290 years before Cleopatra. Ancient Egypt lasted a very long time."},
+  {L:E("Rome","The Romans leave Britain",410,true), M:E("Vikings","Vikings reach North America",1000,true), R:E("Exploration","Columbus reaches the Americas",1492),
+   fact:"Leif Erikson's Vikings landed in Newfoundland around the year 1000, nearly five centuries before Columbus."}
+ ],
+ [ // 12
+  {L:E("America","The Declaration of Independence",1776), M:E("Invention","The first photograph",1826), R:MOON,
+   fact:"Nicéphore Niépce took the oldest surviving photograph from a window in France around 1826, only 50 years after American independence."},
+  {L:E("War","The Battle of Waterloo",1815), M:E("Motoring","The first speeding ticket",1896), R:TODAY,
+   fact:"In 1896 Walter Arnold of Kent was fined for doing 8mph in a 2mph zone, the first speeding conviction on record."},
+  {L:E("Disaster","The Titanic sinks",1912), M:E("Games","The first video game",1958), R:TODAY,
+   fact:"Tennis for Two, an early video game, was played on an oscilloscope in a US lab in 1958."},
+  {L:E("War","The Second World War ends",1945), M:E("Technology","The first mobile phone call",1973), R:E("Technology","The first iPhone",2007),
+   fact:"Motorola's Martin Cooper made the first handheld mobile phone call in 1973, closer to the end of the Second World War than to the iPhone."},
+  {L:E("Exploration","Columbus reaches the Americas",1492), M:E("Exploration","Antarctica is first sighted",1820), R:MOON,
+   fact:"Nobody had seen Antarctica until 1820. That's closer to the Moon landing than to Columbus."}
+ ],
+ [ // 13
+  {L:E("Prehistory","The last Ice Age ends",-9700,true), M:E("Prehistory","Stonehenge's great stones are raised",-2500,true), R:E("Ancient Egypt","Cleopatra dies",-30),
+   fact:"Stonehenge's big sarsen stones went up around 2500 BC, about the same time as the Great Pyramid, and far later than the Ice Age."},
+  {L:E("Prehistory","The last Ice Age ends",-9700,true), M:E("Invention","Writing is invented",-3200,true), R:TODAY,
+   fact:"Writing first appeared in Mesopotamia around 3200 BC. Recorded history is only about 5,000 years old."},
+  {L:PYRAMID, M:E("Rome","Vesuvius buries Pompeii",79), R:TODAY,
+   fact:"Pompeii was destroyed in AD 79. That's about 1,950 years ago, but more than 2,600 years after the Great Pyramid."},
+  {L:PYRAMID, M:E("Architecture","The Great Pyramid loses its record",1311), R:TODAY,
+   fact:"The Great Pyramid was the tallest human-made structure for about 3,800 years, until Lincoln Cathedral's spire overtook it in 1311."},
+  {L:E("Ancient Egypt","Tutankhamun dies",-1323,true), M:E("Rome","Rome is founded (by legend)",-753), R:E("Ancient Egypt","Cleopatra dies",-30),
+   fact:"Rome's traditional founding date of 753 BC is closer to Tutankhamun than to Cleopatra, who met Julius Caesar."}
+ ],
+ [ // 14
+  {L:E("England","The Battle of Hastings",1066), M:E("Monarchy","The last British king leads troops in battle",1743), R:TODAY,
+   fact:"George II was the last British monarch to lead an army into battle, at Dettingen in 1743."},
+  {L:E("Law","Magna Carta is sealed",1215), M:E("Scotland","Scotch whisky is first recorded",1494), R:TODAY,
+   fact:"The earliest written record of Scotch whisky is in the Exchequer Rolls of 1494."},
+  {L:E("America","The Declaration of Independence",1776), M:E("Food & drink","The first chocolate bar",1847), R:MOON,
+   fact:"Fry's of Bristol made the first moulded chocolate bar in 1847. Before that, chocolate was mostly a drink."},
+  {L:E("War","The Battle of Waterloo",1815), M:E("London","The London Underground opens",1863), R:MOON,
+   fact:"The world's first underground railway opened in London in 1863, with steam trains running through the tunnels."},
+  {L:E("Rome","The Romans leave Britain",410,true), M:E("Scotland","The Declaration of Arbroath",1320), R:TODAY,
+   fact:"Scotland's famous letter asserting its independence, sent to the Pope in 1320, is closer to today than to Roman Britain."}
+ ],
+ [ // 15
+  {L:E("Literature","Shakespeare dies",1616), M:E("Japan","The last samurai uprising",1877), R:MOON,
+   fact:"Samurai were still fighting in 1877, closer in time to the Moon landing than to Shakespeare."},
+  {L:E("America","The Declaration of Independence",1776), M:E("Democracy","Women first vote in a national election",1893), R:TODAY,
+   fact:"New Zealand became the first country to give women the vote in national elections, in 1893."},
+  {L:E("Disaster","The Titanic sinks",1912), M:E("Invention","Bubble wrap is invented",1957), R:TODAY,
+   fact:"Bubble wrap was invented in 1957 as a textured wallpaper. It didn't catch on as wallpaper."},
+  {L:MOON, M:E("Technology","The first text message",1992), R:TODAY,
+   fact:"The first text message, 'Merry Christmas', was sent in December 1992. That's closer to the Moon landing than to today."},
+  {L:E("Cold War","The Berlin Wall falls",1989), M:E("Technology","Wikipedia launches",2001), R:TODAY,
+   fact:"Wikipedia launched in 2001, only 12 years after the Berlin Wall fell."}
+ ]
+];
+
+const ICONS = {"pyramid": "<path d=\"M2 42h44\"/><path d=\"M4 40L24 8l20 32z\"/><path d=\"M24 8l20 32H30z\" fill=\"url(#hatch)\"/><path d=\"M24 8l6 32\"/><path d=\"M11 29h15M15 22h10M19 15.5h5\" opacity=\".5\"/>", "ammonite": "<circle cx=\"24\" cy=\"24\" r=\"18\"/><path d=\"M24 6a18 18 0 0 1 0 36a13 13 0 0 1 0-26a9 9 0 0 1 0 18a5 5 0 0 1 0-10a2.5 2.5 0 0 1 0 5\"/><path d=\"M24 6v5M37 11l-3 4M42 24h-5M37 37l-3-3M24 42v-5M11 37l3-3M6 24h5M11 11l4 3M30 17l-2 2M33 26h-3M29 31l-2-2M19 29l2-2\" opacity=\".55\"/>", "feather": "<path d=\"M39 5C23 8 12 20 9 43\"/><path d=\"M39 5c-1 15-12 28-29 37\"/><path d=\"M14 33l9-2M18 26l10-2M23 19l10-2M29 12l8-2\" opacity=\".6\"/><path d=\"M14 33l8-2-12 10z\" fill=\"url(#hatch)\"/>", "planet": "<circle cx=\"24\" cy=\"24\" r=\"11\"/><path d=\"M24 13a11 11 0 0 1 0 22z\" fill=\"url(#hatch)\"/><ellipse cx=\"24\" cy=\"24\" rx=\"21\" ry=\"6.5\" transform=\"rotate(-18 24 24)\"/><path d=\"M7 7v4M5 9h4M41 37v4M39 39h4M40 8v2M39 9h2\" opacity=\".7\"/>", "book": "<path d=\"M24 14C18 10 10 10 5 12v26c5-2 13-2 19 2 6-4 14-4 19-2V12c-5-2-13-2-19 2z\"/><path d=\"M24 14v26\"/><path d=\"M9 18c4-1 8-1 11 1M9 23c4-1 8-1 11 1M9 28c4-1 8-1 11 1M28 19c3-2 7-2 11-1M28 24c3-2 7-2 11-1M28 29c3-2 7-2 11-1\" opacity=\".55\"/><path d=\"M24 40c6-4 14-4 19-2v3c-5-2-13-2-19 2z\" fill=\"url(#hatch)\"/>", "scroll": "<path d=\"M14 7h22a4 4 0 0 1 4 4v25\"/><path d=\"M14 7a4 4 0 0 0-4 4v3h8v-3a4 4 0 0 0-4-4z\" fill=\"url(#hatch)\"/><path d=\"M18 11v26a4 4 0 0 0 4 4h18a4 4 0 0 0 0-8H22a4 4 0 0 1 0 8\"/><path d=\"M22 15h13M22 20h13M22 25h9\" opacity=\".55\"/>", "temple": "<path d=\"M5 16L24 6l19 10z\" fill=\"url(#hatch)\"/><path d=\"M5 16h38M7 19.5h34M7 38h34M4 42h40\"/><path d=\"M11 19.5V38M15 19.5V38M21 19.5V38M27 19.5V38M33 19.5V38M37 19.5V38\"/><path d=\"M13 21v15M24 21v15M35 21v15\" opacity=\".35\"/>", "swords": "<path d=\"M9 39L33 9l5-2-2 5L12 42z\"/><path d=\"M39 39L15 9l-5-2 2 5 24 30z\"/><path d=\"M12 31l6 6M36 31l-6 6\"/><circle cx=\"8.5\" cy=\"42.5\" r=\"2\"/><circle cx=\"39.5\" cy=\"42.5\" r=\"2\"/>", "ship": "<path d=\"M5 32h38l-6 8H11z\" fill=\"url(#hatch)\"/><path d=\"M24 5v27\"/><path d=\"M24 6l6 2.5-6 2.5\"/><path d=\"M24 12c8 3 11 9 11 18H24\"/><path d=\"M24 13c-6 3-9 8-9 17h9\"/><path d=\"M3 45c3-2 5-2 8 0s5 2 8 0 5-2 8 0 5 2 8 0 5-2 8 0\" opacity=\".6\"/>", "bulb": "<path d=\"M17 27a10 10 0 1 1 14 0c-2 2-3 4-3 7h-8c0-3-1-5-3-7z\"/><path d=\"M20 37h8M20.5 40h7M22 43h4\"/><path d=\"M21 31l1.5-7 1.5 4 1.5-4 1.5 7\" opacity=\".75\"/><path d=\"M24 3v3M10 9l2.5 2.5M38 9l-2.5 2.5M5 21h3.5M39.5 21H43\" opacity=\".6\"/>", "flask": "<path d=\"M19 4h10M20 4v12L8 38a4 4 0 0 0 4 6h24a4 4 0 0 0 4-6L28 16V4\"/><path d=\"M12.5 31h23l4 7a3 3 0 0 1-3 4h-25a3 3 0 0 1-3-4z\" fill=\"url(#hatch)\"/><circle cx=\"22\" cy=\"25\" r=\"1.4\"/><circle cx=\"27\" cy=\"21\" r=\"1\"/>", "crown": "<path d=\"M8 34L6 14l10 10 8-14 8 14 10-10-2 20z\"/><path d=\"M8 34h32v5H8z\" fill=\"url(#hatch)\"/><circle cx=\"6\" cy=\"12.5\" r=\"1.6\"/><circle cx=\"24\" cy=\"8.5\" r=\"1.6\"/><circle cx=\"42\" cy=\"12.5\" r=\"1.6\"/><path d=\"M16 29h16\" opacity=\".5\"/>", "thistle": "<path d=\"M17 23c0-5 3-8 7-8s7 3 7 8c0 4-3 7-7 7s-7-3-7-7z\" fill=\"url(#hatch)\"/><path d=\"M18 16l-3-9M21 15l-1-10M24 15V4M27 15l1-10M30 16l3-9\"/><path d=\"M24 30v15\"/><path d=\"M24 39c-4-6-10-7-15-5 4 1 7 3 9 6M24 36c4-6 10-7 15-5-4 1-7 3-9 6\"/><path d=\"M17 25l3.5-2 3.5 2 3.5-2 3.5 2\" opacity=\".7\"/>", "castle": "<path d=\"M8 43V16h5v4h4v-4h5v4h4v-4h5v4h4v-4h5v27z\"/><path d=\"M19 43v-8a5 5 0 0 1 10 0v8z\" fill=\"url(#hatch)\"/><path d=\"M13 26v5M35 26v5M4 43h40\"/>", "wall": "<path d=\"M4 15h40v26H4z\"/><path d=\"M4 21.5h40M4 28h40M4 34.5h40M13 15v6.5M25 15v6.5M37 15v6.5M8 21.5V28M19 21.5V28M31 21.5V28M42 21.5V28M13 28v6.5M25 28v6.5M37 28v6.5M8 34.5V41M19 34.5V41M31 34.5V41\" opacity=\".6\"/><path d=\"M4 41h40v3H4z\" fill=\"url(#hatch)\"/>", "tower": "<path d=\"M24 3v4M21 7h6l2 12h-10zM19 19h10l5 13H14zM14 32h20l5 12H9z\"/><path d=\"M19 44c1-5 9-5 10 0\" fill=\"url(#hatch)\"/><path d=\"M22 11l4 6M26 11l-4 6M20 22l8 8M28 22l-8 8\" opacity=\".5\"/>", "gamepad": "<path d=\"M14 17h20a8 8 0 0 1 8 8l1.5 7a5 5 0 0 1-9 3.5l-3.5-4.5H17l-3.5 4.5a5 5 0 0 1-9-3.5L6 25a8 8 0 0 1 8-8z\"/><path d=\"M14 22v8M10 26h8\"/><circle cx=\"32\" cy=\"24\" r=\"1.7\"/><circle cx=\"36\" cy=\"28\" r=\"1.7\"/><path d=\"M22 24h4\" opacity=\".6\"/>", "medal": "<path d=\"M18 22L13 5h7l4 10M30 22l5-17h-7l-4 10\"/><circle cx=\"24\" cy=\"31\" r=\"11\"/><circle cx=\"24\" cy=\"31\" r=\"7\" fill=\"url(#hatch)\"/>", "cup": "<path d=\"M10 20h24v10a10 10 0 0 1-10 10h-4a10 10 0 0 1-10-10z\" fill=\"url(#hatch)\"/><path d=\"M34 23h3a4 4 0 0 1 0 8h-3\"/><path d=\"M5 44h34\"/><path d=\"M17 15c-2-3 2-4 0-7M23 15c-2-3 2-4 0-7M29 15c-2-3 2-4 0-7\" opacity=\".6\"/>", "balloon": "<path d=\"M24 4C15 4 9 11 9 19c0 7 7 12 11 17h8c4-5 11-10 11-17 0-8-6-15-15-15z\"/><path d=\"M24 4c-4 0-6 7-6 15 0 7 2 12 2 17M24 4c4 0 6 7 6 15 0 7-2 12-2 17M9.5 17h29\" opacity=\".55\"/><path d=\"M20 36l1 4M28 36l-1 4\"/><path d=\"M21 40h6v5h-6z\" fill=\"url(#hatch)\"/>", "wheel": "<circle cx=\"24\" cy=\"24\" r=\"19\"/><circle cx=\"24\" cy=\"24\" r=\"15.5\" opacity=\".45\"/><circle cx=\"24\" cy=\"24\" r=\"3.5\" fill=\"url(#hatch)\"/><path d=\"M24 5v15.5M24 27.5V43M5 24h15.5M27.5 24H43M10.6 10.6l10.9 10.9M26.5 26.5l10.9 10.9M37.4 10.6L26.5 21.5M21.5 26.5L10.6 37.4\" opacity=\".75\"/>", "torii": "<path d=\"M4 10c7 3 33 3 40 0l-2 5c-6 2-30 2-36 0z\" fill=\"url(#hatch)\"/><path d=\"M9 21h30M14 14v30M34 14v30M24 15v6\"/><path d=\"M11 44h6M31 44h6\"/>", "stepped": "<path d=\"M3 43h42M7 43v-7h34v7M11 36v-7h26v7M15 29v-7h18v7M19 22v-7h10v7\"/><path d=\"M20 15V9h8v6z\" fill=\"url(#hatch)\"/><path d=\"M22 43V29h4v14\" opacity=\".55\"/>", "hourglass": "<path d=\"M12 4h24M12 44h24M14 4c0 10 20 10 20 20S14 34 14 44M34 4c0 10-20 10-20 20s20 10 20 20\"/><path d=\"M17.5 41L24 34l6.5 7z\" fill=\"url(#hatch)\"/><path d=\"M20 11h8\" opacity=\".5\"/><path d=\"M24 25v8\" stroke-dasharray=\"1 2\"/>"};
+const TAG_ICON = {"Ancient Egypt": "pyramid", "Prehistory": "ammonite", "Nature": "feather", "Space": "planet", "Education": "book", "Literature": "book", "Law": "scroll", "America": "scroll", "Ancient Greece": "temple", "Rome": "temple", "Empires": "temple", "Architecture": "temple", "Democracy": "temple", "War": "swords", "England": "swords", "Vikings": "ship", "Exploration": "ship", "Disaster": "ship", "Invention": "bulb", "Technology": "bulb", "Engineering": "bulb", "Science": "flask", "Monarchy": "crown", "Britain": "crown", "Scotland": "thistle", "Dundee": "thistle", "London": "castle", "Cold War": "wall", "China": "wall", "Paris": "tower", "Games": "gamepad", "Sport": "medal", "Food & drink": "cup", "Flight": "balloon", "Motoring": "wheel", "Japan": "torii", "The Americas": "stepped", "The present": "hourglass", "Europe": "hourglass"};
+const icon = (tag, cls="") => `<svg class="ico ${cls}" viewBox="0 0 48 48" aria-hidden="true">${ICONS[TAG_ICON[tag]||"hourglass"]}</svg>`;
+
+// ---------- sound ----------
+let actx = null, muted = false;
+try{ muted = localStorage.getItem("closer-muted")==="1"; }catch(e){}
+function ac(){
+  if (muted) return null;
+  try{ actx = actx || new (window.AudioContext||window.webkitAudioContext)(); if (actx.state==="suspended") actx.resume(); return actx; }catch(e){ return null; }
+}
+function tone(f, at, dur, type="sine", vol=.14){
+  const a = ac(); if (!a) return;
+  const t = a.currentTime + at, o = a.createOscillator(), g = a.createGain();
+  o.type = type; o.frequency.setValueAtTime(f, t);
+  g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t+.012); g.gain.exponentialRampToValueAtTime(.0001, t+dur);
+  o.connect(g); g.connect(a.destination); o.start(t); o.stop(t+dur+.05);
+}
+function buzz(p){ try{ if (!muted && navigator.vibrate) navigator.vibrate(p); }catch(e){} }
+const SFX = {
+  start(){ tone(523,0,.35,"sine",.12); tone(784,.12,.6,"sine",.1); tone(1568,.12,.35,"sine",.02); },
+  tick(last){ tone(last?1400:1100,0,.06,"square",.035); buzz(15); },
+  right(){ tone(659,0,.6,"sine",.13); tone(988,.1,.9,"sine",.11); tone(1976,.1,.5,"sine",.025); buzz(20); },
+  wrong(){ tone(220,0,.35,"triangle",.14); tone(165,.13,.55,"triangle",.12); buzz([40,40,40]); },
+  timeout(){ tone(392,0,.25,"triangle",.1); tone(330,.18,.25,"triangle",.1); tone(262,.36,.5,"triangle",.1); buzz(80); },
+  end(sc){ [523,659,784,1047].slice(0, Math.max(1, sc-1)).forEach((f,i)=>tone(f,i*.13,.7,"sine",.1)); }
+};
+const SPK_ON = '<svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"/></svg>';
+const SPK_OFF = '<svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 10l4 4M21 10l-4 4"/></svg>';
+function renderMute(){ const b = document.getElementById("mute"); b.innerHTML = muted ? SPK_OFF : SPK_ON; b.classList.toggle("on", !muted); b.setAttribute("aria-label", muted ? "Turn sound on" : "Turn sound off"); }
+document.getElementById("mute").onclick = ()=>{ muted = !muted; try{ localStorage.setItem("closer-muted", muted?"1":"0"); }catch(e){} renderMute(); if (!muted) tone(784,0,.2,"sine",.08); };
+renderMute();
+
+// ---------- helpers ----------
+const $ = id => document.getElementById(id);
+function fmtYear(e){
+  const c = e.approx ? "c. " : "";
+  if (e.name === "Today") return "Now";
+  if (e.year <= -1e6) return `${c}${(-e.year/1e6).toLocaleString()} million years ago`;
+  if (e.year <= -10000) return `${c}${Math.round((2026-e.year)/1000).toLocaleString()},000 years ago`;
+  if (e.year < 0) return `${c}${(-e.year).toLocaleString()} BC`;
+  if (e.year < 1000) return `${c}AD ${e.year}`;
+  return `${c}${e.year}`;
+}
+function fmtGap(n){
+  if (n >= 1e6) return [`${Math.round(n/1e6).toLocaleString()}`, "million years"];
+  return [`${Math.round(n).toLocaleString()}`, "years"];
+}
+const store = {
+  get(k,d){ try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
+  set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+};
+
+// ---------- state ----------
+const START = new Date(2026,10,19);
+const dayDiff = Math.floor((new Date().setHours(0,0,0,0) - START) / 864e5);
+const todayIdx = ((dayDiff % DAYS.length) + DAYS.length) % DAYS.length;
+let day = todayIdx, round = 0, results = [];
+const dateFor = i => { const d = new Date(START); d.setDate(d.getDate()+i); return d.toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long"}); };
+
+function renderArchive(){
+  const a = $("archive"); a.innerHTML = "";
+  DAYS.forEach((_,i)=>{
+    const b = document.createElement("button");
+    b.textContent = i+1;
+    b.setAttribute("aria-label", `Puzzle ${i+1}`);
+    b.className = [i===day?"on":"", i===todayIdx?"today":"", store.get("closer-day-"+i,null)?"done":""].join(" ");
+    b.onclick = ()=>{ day=i; startDay(); window.scrollTo({top:0,behavior:"smooth"}); };
+    a.appendChild(b);
+  });
+}
+
+// ---------- timer ----------
+const LIMIT = 10;
+let tStart = 0, tRaf = 0;
+function stopTimer(){ cancelAnimationFrame(tRaf); tRaf = 0; }
+function startTimer(){
+  stopTimer();
+  tStart = performance.now();
+  const bar = $("tbar"), num = $("tnum"), box = bar.closest(".timer");
+  box.classList.remove("low");
+  const tick = now => {
+    const left = Math.max(0, LIMIT - (now - tStart)/1000);
+    bar.style.transform = `scaleX(${left/LIMIT})`;
+    const sec = Math.ceil(left);
+    if (sec !== num.textContent*1 && sec <= 3 && sec > 0) SFX.tick(sec===1);
+    num.textContent = sec;
+    box.classList.toggle("low", left <= 3 && left > 0);
+    if (left <= 0){ tRaf = 0; answer(null); return; }
+    tRaf = requestAnimationFrame(tick);
+  };
+  tRaf = requestAnimationFrame(tick);
+}
+const cls = x => x===true ? "g" : x==="t" ? "t" : "b";
+const correctCount = () => results.filter(x=>x===true).length;
+
+function startDay(fresh=false){
+  stopTimer();
+  round = 0; results = [];
+  $("meta").textContent = `No. ${day+1} · ${dateFor(day)}`;
+  const saved = fresh ? null : store.get("closer-day-"+day, null);
+  renderArchive();
+  if (saved){ results = saved; $("ready").style.display = "none"; showEnd(); return; }
+  $("end").classList.remove("show");
+  $("game").style.display = "none";
+  $("readyNo").textContent = `No. ${day+1}`;
+  $("ready").style.display = "block";
+}
+$("startBtn").onclick = ()=>{
+  SFX.start();
+  $("ready").style.display = "none";
+  $("game").style.display = "block";
+  renderRound();
+};
+
+function renderProgress(){
+  $("progress").innerHTML = "";
+  for (let i=0;i<5;i++){
+    const s = document.createElement("i");
+    if (i<results.length) s.className = cls(results[i]);
+    else if (i===round) s.className = "c";
+    $("progress").appendChild(s);
+  }
+}
+
+function fillChoice(btn, e){
+  btn.className = "choice"; btn.disabled = false;
+  btn.querySelector(".tag").textContent = e.tag;
+  btn.querySelector(".ic").innerHTML = icon(e.tag);
+  btn.querySelector(".name").textContent = e.name;
+  const w = btn.querySelector(".when"); w.textContent = ""; w.classList.remove("show");
+}
+
+function renderRound(){
+  const r = DAYS[day][round];
+  renderProgress();
+  $("mIcon").innerHTML = icon(r.M.tag, "pop");
+  $("mTag").textContent = r.M.tag; $("mName").textContent = r.M.name;
+  $("mWhen").textContent = ""; $("mWhen").classList.remove("show");
+  fillChoice($("cL"), r.L); fillChoice($("cR"), r.R);
+  $("reveal").classList.remove("show");
+  $("cL").onclick = ()=>answer("L"); $("cR").onclick = ()=>answer("R");
+  startTimer();
+}
+
+function answer(side){
+  const r = DAYS[day][round];
+  const gL = Math.abs(r.M.year - r.L.year), gR = Math.abs(r.R.year - r.M.year);
+  const correct = gL < gR ? "L" : "R";
+  if (results.length > round) return; // already answered
+  stopTimer();
+  const timedOut = side === null;
+  const ok = side === correct;
+  results.push(timedOut ? "t" : ok);
+  ["L","R"].forEach(s=>{
+    const b = $("c"+s); b.disabled = true;
+    const w = b.querySelector(".when"); w.textContent = fmtYear(r[s]); w.classList.add("show");
+    if (s===correct) b.classList.add("right"); else if (s===side) b.classList.add("wrong");
+  });
+  $("mWhen").textContent = fmtYear(r.M); $("mWhen").classList.add("show");
+  timedOut ? SFX.timeout() : ok ? SFX.right() : SFX.wrong();
+  $("verdict").textContent = timedOut ? "Out of time." : ok ? "Quite right." : "Not quite.";
+  $("verdict").className = "verdict " + (timedOut ? "t" : ok ? "g" : "b");
+  $("fact").textContent = r.fact;
+  drawTimeline(gL, gR, correct);
+  $("next").textContent = round < 4 ? "Next moment" : "See your score";
+  $("reveal").classList.add("show");
+  renderProgress();
+  setTimeout(()=>$("reveal").scrollIntoView({behavior:"smooth",block:"nearest"}), 80);
+}
+
+function drawTimeline(gL, gR, correct){
+  const pM = gL / (gL + gR) * 100;
+  const [aN,aU] = fmtGap(gL), [bN,bU] = fmtGap(gR);
+  const clamp = v => Math.min(Math.max(v,18),82);
+  const segL = correct==="L" ? `<div class="seg" style="left:0;width:${pM}%"></div>` : "";
+  const segR = correct==="R" ? `<div class="seg" style="left:${pM}%;width:${100-pM}%"></div>` : "";
+  $("timeline").innerHTML = `<div class="line"></div>${segL}${segR}
+    <div class="tick" style="left:0"></div><div class="tick" style="left:100%"></div>
+    <div class="tick mid" id="midT" style="left:50%"></div>
+    <div class="gap ${correct==="L"?"win":""}" style="left:${clamp(pM/2)}%"><b>${aN}</b><span class="caps">${aU}</span></div>
+    <div class="gap ${correct==="R"?"win":""}" style="left:${clamp(pM+(100-pM)/2)}%"><b>${bN}</b><span class="caps">${bU}</span></div>`;
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{ $("midT").style.left = pM + "%"; }));
+}
+
+$("next").onclick = ()=>{
+  if (round < 4){ round++; renderRound(); window.scrollTo({top:0,behavior:"smooth"}); return; }
+  const first = !store.get("closer-day-"+day, null);
+  store.set("closer-day-"+day, results);
+  if (first){
+    const st = store.get("closer-stats", {played:0, streak:0, perfect:0});
+    const sc = correctCount();
+    st.played++; st.streak = sc >= 3 ? st.streak + 1 : 0; if (sc === 5) st.perfect++;
+    store.set("closer-stats", st);
+  }
+  showEnd(); SFX.end(correctCount()); renderArchive(); window.scrollTo({top:0,behavior:"smooth"});
+};
+
+function showEnd(){
+  $("game").style.display = "none";
+  stopTimer();
+  const sc = correctCount();
+  $("endTitle").textContent = `No. ${day+1} · Your score`;
+  $("score").innerHTML = `${sc}<em> / 5</em>`;
+  $("squares").innerHTML = results.map(x=>`<i class="${cls(x)}"></i>`).join("");
+  $("endMsg").textContent = ["Time is a slippery thing.","Lost somewhere in the centuries.","A respectable sense of time.","A fine sense of time.","Very nearly flawless.","Flawless. A walking timeline."][sc];
+  const st = store.get("closer-stats", {played:0, streak:0, perfect:0});
+  $("sPlayed").textContent = st.played; $("sStreak").textContent = st.streak; $("sPerfect").textContent = st.perfect;
+  $("sharebox").style.display = "none";
+  $("reviewList").innerHTML = DAYS[day].map((r,i)=>`<li><i class="${cls(results[i])}"></i><div><b>${r.M.name}</b><br>${r.fact}</div></li>`).join("");
+  $("end").classList.add("show");
+}
+
+// Share text includes a link back to the game. On a real web address it uses that address;
+// anywhere else (e.g. a preview) it is left off.
+const SITE = /^https?:$/.test(location.protocol) && !/claude|localhost|127\.0\.0\.1/.test(location.host) ? location.host : "";
+$("share").onclick = async ()=>{
+  const sc = correctCount();
+  const squares = results.map(x=>x===true?"🟩":x==="t"?"⬛":"🟥").join("");
+  const text = `Closer No. ${day+1} ⏳ ${sc}/5\n${squares}` + (SITE ? `\n${SITE}` : "");
+  if (navigator.share && /Android|iPhone|iPad/i.test(navigator.userAgent)){
+    try { await navigator.share({text}); return; } catch(e){ if (e && e.name === "AbortError") return; }
+  }
+  try { await navigator.clipboard.writeText(text); $("share").textContent = "Copied to clipboard"; }
+  catch(e){ $("share").textContent = "Copy the text below"; }
+  $("sharebox").textContent = text; $("sharebox").style.display = "block";
+  setTimeout(()=>{ $("share").textContent = "Share result"; }, 2200);
+};
+$("replay").onclick = ()=>{ startDay(true); window.scrollTo({top:0,behavior:"smooth"}); };
+
+startDay();
+</script>
+</body>
+</html>
