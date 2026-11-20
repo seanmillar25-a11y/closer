@@ -33,17 +33,10 @@
   .mark svg{width:18px;height:26px}
   h1{font-family:var(--serif);font-style:italic;font-weight:400;font-size:46px;line-height:1;letter-spacing:-.5px}
   .tagline{color:var(--muted);margin-top:8px}
-  .rule{display:flex;align-items:center;gap:12px;margin:18px 0 0;color:var(--gold)}
+  .rule{display:flex;align-items:center;gap:12px;margin:18px 0 28px;color:var(--gold)}
   .rule::before,.rule::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--hair),transparent)}
   .rule span{color:var(--soft)}
 
-  /* archive */
-  .archive{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:16px 0 26px}
-  .archive button{width:32px;height:32px;border-radius:50%;border:1px solid var(--hair2);background:transparent;
-       color:var(--muted);font:500 12px var(--sans);cursor:pointer;position:relative;transition:all .2s}
-  .archive button.on{border-color:var(--gold);color:var(--gold2);background:rgba(201,168,106,.08)}
-  .archive button.done::after{content:"";position:absolute;bottom:-5px;left:50%;width:4px;height:4px;margin-left:-2px;border-radius:50%;background:var(--gold)}
-  .archive button.today{box-shadow:0 0 0 3px rgba(201,168,106,.12)}
 
   /* progress */
   .progress{display:flex;justify-content:center;gap:14px;margin-bottom:18px}
@@ -184,7 +177,6 @@
     <div class="rule caps"><span id="meta"></span></div>
   </header>
 
-  <nav class="archive" id="archive" aria-label="Puzzle archive"></nav>
 
   <section class="ready" id="ready">
     <div class="caps" style="color:var(--gold)" id="readyNo"></div>
@@ -239,7 +231,7 @@
   <footer class="how">
     <span class="caps">How to play</span>
     Each round shows one moment in history. Decide whether it sits closer in time to the moment on the left or the one on the right. Five rounds a day, the same for everyone.<br><br>
-    <em>Prototype: fifteen puzzles are loaded. Tap a number to play any of them.</em>
+    <em>A new puzzle every day at midnight.</em>
   </footer>
 </div>
 
@@ -495,17 +487,6 @@ const todayIdx = ((dayDiff % DAYS.length) + DAYS.length) % DAYS.length;
 let day = todayIdx, round = 0, results = [];
 const dateFor = i => { const d = new Date(START); d.setDate(d.getDate()+i); return d.toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long"}); };
 
-function renderArchive(){
-  const a = $("archive"); a.innerHTML = "";
-  DAYS.forEach((_,i)=>{
-    const b = document.createElement("button");
-    b.textContent = i+1;
-    b.setAttribute("aria-label", `Puzzle ${i+1}`);
-    b.className = [i===day?"on":"", i===todayIdx?"today":"", store.get("closer-day-"+i,null)?"done":""].join(" ");
-    b.onclick = ()=>{ day=i; startDay(); window.scrollTo({top:0,behavior:"smooth"}); };
-    a.appendChild(b);
-  });
-}
 
 // ---------- timer ----------
 const LIMIT = 10;
@@ -536,7 +517,6 @@ function startDay(fresh=false){
   round = 0; results = [];
   $("meta").textContent = `No. ${day+1} · ${dateFor(day)}`;
   const saved = fresh ? null : store.get("closer-day-"+day, null);
-  renderArchive();
   if (saved){ results = saved; $("ready").style.display = "none"; showEnd(); return; }
   $("end").classList.remove("show");
   $("game").style.display = "none";
@@ -630,7 +610,7 @@ $("next").onclick = ()=>{
     st.played++; st.streak = sc >= 3 ? st.streak + 1 : 0; if (sc === 5) st.perfect++;
     store.set("closer-stats", st);
   }
-  showEnd(); SFX.end(correctCount()); renderArchive(); window.scrollTo({top:0,behavior:"smooth"});
+  showEnd(); SFX.end(correctCount()); window.scrollTo({top:0,behavior:"smooth"});
 };
 
 function showEnd(){
