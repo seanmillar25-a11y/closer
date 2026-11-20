@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Closer — the daily history game</title>
+<title>EraDuel — the daily history game</title>
 <meta name="description" content="Five moments in history. Ten seconds each. Is this moment closer to the one on the left, or the right?">
 <meta name="theme-color" content="#0c0b09">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -174,7 +174,7 @@
   <header>
     <div class="mark">
       <svg viewBox="0 0 18 26" fill="none" stroke="#c9a86a" stroke-width="1.2"><path d="M2 1h14M2 25h14M3 1c0 7 12 7 12 12S3 18 3 25M15 1c0 7-12 7-12 12s12 5 12 12"/><path d="M6.5 22.5h5L9 19.5z" fill="#c9a86a" stroke="none"/></svg>
-      <h1>Closer</h1>
+      <h1>EraDuel</h1>
     </div>
     <div class="tagline caps">A daily game of time</div>
     <div class="rule caps"><span id="meta"></span></div>
@@ -455,7 +455,7 @@ const SITE = /^https?:$/.test(location.protocol) && !/claude|localhost|127\.0\.0
 $("share").onclick = async ()=>{
   const sc = correctCount();
   const squares = results.map(x=>x===true?"🟩":x==="t"?"⬛":"🟥").join("");
-  const text = `Closer No. ${day+1} ⏳ ${sc}/5\n${squares}` + (SITE ? `\n${SITE}` : "");
+  const text = `EraDuel No. ${day+1} ⏳ ${sc}/5\n${squares}` + (SITE ? `\n${SITE}` : "");
   if (navigator.share && /Android|iPhone|iPad/i.test(navigator.userAgent)){
     try { await navigator.share({text}); return; } catch(e){ if (e && e.name === "AbortError") return; }
   }
