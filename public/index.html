@@ -158,6 +158,9 @@
   .review li i.g{background:var(--good)} .review li i.b{background:var(--bad)}
   .review li b{font-family:var(--serif);font-weight:400;font-size:17px;color:var(--ink)}
 
+  .nextin{margin-top:24px;color:var(--muted)}
+  .nextin b{display:block;margin-top:6px;font-family:var(--serif);font-weight:400;font-size:34px;letter-spacing:.02em;text-transform:none;color:var(--gold2);font-variant-numeric:tabular-nums}
+
   .how{margin-top:34px;padding-top:20px;border-top:1px solid var(--hair2);color:var(--muted);font-size:13px;line-height:1.65;text-align:center}
   .how .caps{color:var(--gold);display:block;margin-bottom:8px}
 </style>
@@ -224,7 +227,7 @@
     </div>
     <button class="btn" id="share">Share result</button>
     <div class="sharebox" id="sharebox"></div>
-    <button class="btn ghost" id="replay">Play again</button>
+    <div class="nextin caps">Next puzzle in<b id="countdown">--:--:--</b></div>
     <div class="review"><h3 class="caps">Today's moments</h3><ul id="reviewList"></ul></div>
   </section>
 
@@ -643,7 +646,15 @@ $("share").onclick = async ()=>{
   $("sharebox").textContent = text; $("sharebox").style.display = "block";
   setTimeout(()=>{ $("share").textContent = "Share result"; }, 2200);
 };
-$("replay").onclick = ()=>{ startDay(true); window.scrollTo({top:0,behavior:"smooth"}); };
+// Countdown to the next puzzle (local midnight). When it hits zero, load the new puzzle.
+function tickCountdown(){
+  const now = new Date(), next = new Date(now); next.setHours(24,0,0,0);
+  const ms = next - now;
+  if (ms <= 1000){ setTimeout(()=>location.reload(), 1500); }
+  const t = Math.max(0, Math.floor(ms/1000)), pad = n => String(n).padStart(2,"0");
+  $("countdown").textContent = `${pad(Math.floor(t/3600))}:${pad(Math.floor(t%3600/60))}:${pad(t%60)}`;
+}
+tickCountdown(); setInterval(tickCountdown, 1000);
 
 startDay();
 </script>
